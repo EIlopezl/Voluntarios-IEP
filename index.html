@@ -1,0 +1,1934 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cuerpo de Voluntarios IEP Machalí — 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ── BETHPROF BRAND TOKENS ── */
+:root {
+  --negro:   #0F0F0F;
+  --carbon:  #2A2929;
+  --carbon2: #1e1e1e;
+  --amarillo:#FFD000;
+  --ambar:   #f0b800;
+  --blanco:  #FFFFFF;
+  --gris:    #f5f5f5;
+  --gris2:   #e8e8e8;
+  --gris3:   #cccccc;
+  --text:    #222222;
+  --muted:   #666666;
+  --pass:    #22c55e;
+  --absent:  #ef4444;
+  --excuse:  #f59e0b;
+  --trab:    #3b82f6;
+  --miss:    #8b5cf6;
+  --shadow:  0 4px 20px rgba(0,0,0,0.12);
+  --shadow2: 0 2px 8px rgba(0,0,0,0.08);
+  --font:    'Inter', sans-serif;
+  --mono:    'JetBrains Mono', monospace;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{font-size:14px;scroll-behavior:smooth;}
+body{font-family:var(--font);background:var(--gris);color:var(--text);min-height:100vh;}
+
+/* ── TOPBAR ── */
+.topbar{background:var(--negro);border-bottom:3px solid var(--amarillo);padding:0 24px;height:60px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(0,0,0,.4);}
+.topbar-brand{display:flex;align-items:center;gap:12px;}
+.topbar-icon{width:36px;height:36px;background:var(--amarillo);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;}
+.topbar-name{font-size:16px;font-weight:800;color:var(--blanco);letter-spacing:-0.01em;}
+.topbar-name span{color:var(--amarillo);}
+.topbar-sub{font-size:10px;font-family:var(--mono);color:#888;letter-spacing:0.12em;text-transform:uppercase;}
+.topbar-right{font-family:var(--mono);font-size:11px;color:var(--amarillo);letter-spacing:0.1em;}
+
+/* ── NAV TABS ── */
+.nav-tabs{background:var(--carbon);padding:0 24px;display:flex;gap:0;overflow-x:auto;scrollbar-width:none;}
+.nav-tabs::-webkit-scrollbar{display:none;}
+.nav-tab{padding:14px 22px;font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#888;background:none;border:none;border-bottom:3px solid transparent;cursor:pointer;transition:all .2s;white-space:nowrap;font-family:var(--font);}
+.nav-tab:hover{color:var(--blanco);}
+.nav-tab.active{color:var(--amarillo);border-bottom-color:var(--amarillo);}
+
+/* ── PAGE / PANEL ── */
+.page{max-width:1400px;margin:0 auto;padding:24px;}
+.panel{display:none;animation:fadeIn .2s ease;}
+.panel.active{display:block;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── SECTION TITLE ── */
+.sec-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;flex-wrap:wrap;gap:10px;}
+.sec-title{font-size:20px;font-weight:800;color:var(--negro);display:flex;align-items:center;gap:10px;}
+.sec-title::before{content:'';display:inline-block;width:4px;height:22px;background:var(--amarillo);border-radius:2px;}
+.sec-sub{font-size:11px;font-family:var(--mono);color:var(--muted);letter-spacing:0.1em;text-transform:uppercase;}
+
+/* ── STAT CARDS ── */
+.kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-bottom:24px;}
+.kpi{background:var(--blanco);border:1px solid var(--gris2);border-radius:12px;padding:18px 20px;box-shadow:var(--shadow2);position:relative;overflow:hidden;}
+.kpi::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--amarillo);}
+.kpi.dark{background:var(--negro);}
+.kpi.dark .kpi-label{color:#888;}
+.kpi.dark .kpi-val{color:var(--amarillo);}
+.kpi.dark .kpi-sub{color:#555;}
+.kpi.accent{background:var(--amarillo);}
+.kpi.accent .kpi-label{color:var(--carbon);}
+.kpi.accent .kpi-val{color:var(--negro);}
+.kpi.accent::after{background:var(--negro);}
+.kpi-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--muted);margin-bottom:6px;}
+.kpi-val{font-size:26px;font-weight:800;color:var(--negro);font-family:var(--mono);line-height:1;}
+.kpi-sub{font-size:11px;color:var(--muted);margin-top:4px;}
+
+/* ── CARD ── */
+.card{background:var(--blanco);border:1px solid var(--gris2);border-radius:12px;box-shadow:var(--shadow2);overflow:hidden;margin-bottom:20px;}
+.card-head{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;background:var(--negro);gap:10px;flex-wrap:wrap;}
+.card-head-title{font-size:13px;font-weight:700;color:var(--blanco);letter-spacing:0.05em;text-transform:uppercase;display:flex;align-items:center;gap:8px;}
+.card-head-title span{background:var(--amarillo);color:var(--negro);border-radius:4px;padding:2px 8px;font-size:11px;}
+.card-body{padding:18px;}
+
+/* ── TABLE ── */
+.tbl-wrap{overflow-x:auto;}
+table{width:100%;border-collapse:collapse;font-size:12px;}
+thead th{background:var(--negro);color:var(--amarillo);font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:10px 12px;text-align:left;white-space:nowrap;border-right:1px solid var(--carbon);}
+thead th:last-child{border-right:none;}
+tbody tr{border-bottom:1px solid var(--gris2);transition:background .12s;}
+tbody tr:hover{background:rgba(255,208,0,.05);}
+tbody tr:last-child{border-bottom:none;}
+tbody td{padding:10px 12px;color:var(--text);vertical-align:middle;}
+.td-num{font-family:var(--mono);font-size:11px;color:var(--muted);text-align:right;}
+.td-name{font-weight:600;min-width:160px;}
+.td-money{font-family:var(--mono);font-size:12px;font-weight:700;text-align:right;}
+.td-ing{color:#166534;}
+.td-egr{color:#991b1b;}
+.td-zero{color:var(--gris3);}
+
+/* ── ASISTENCIA CHIPS ── */
+.chip{display:inline-flex;align-items:center;justify-content:center;width:26px;height:22px;border-radius:4px;font-size:10px;font-weight:800;letter-spacing:0.05em;cursor:pointer;transition:all .12s;border:1.5px solid transparent;font-family:var(--mono);}
+.chip:hover{transform:scale(1.15);z-index:1;}
+.chip-P{background:#dcfce7;color:#166534;border-color:#86efac;}
+.chip-A{background:#fee2e2;color:#991b1b;border-color:#fca5a5;}
+.chip-E{background:#fef9c3;color:#854d0e;border-color:#fde047;}
+.chip-T{background:#dbeafe;color:#1e40af;border-color:#93c5fd;}
+.chip-M{background:#ede9fe;color:#5b21b6;border-color:#c4b5fd;}
+.chip-x{background:var(--gris2);color:var(--gris3);border-color:var(--gris2);}
+
+/* ── CUOTA CELL ── */
+.cell-cuota{display:inline-block;min-width:60px;text-align:center;padding:2px 6px;border-radius:4px;font-family:var(--mono);font-size:11px;font-weight:700;}
+.cell-pagado{background:#dcfce7;color:#166534;}
+.cell-vacio{color:var(--gris3);}
+
+/* ── MONTH SELECTOR ── */
+.month-sel{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:18px;}
+.ms-btn{padding:6px 14px;border-radius:20px;border:2px solid var(--gris2);background:var(--blanco);font-size:11px;font-weight:700;letter-spacing:0.06em;cursor:pointer;transition:all .15s;font-family:var(--font);color:var(--muted);}
+.ms-btn:hover{border-color:var(--amarillo);color:var(--negro);}
+.ms-btn.active{background:var(--amarillo);border-color:var(--amarillo);color:var(--negro);}
+
+/* ── LEGEND ── */
+.legend{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:14px;align-items:center;}
+.leg-item{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--muted);}
+
+/* ── FILTER / SEARCH ── */
+.toolbar-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:16px;}
+.search-box{flex:1;min-width:200px;padding:9px 14px;border:2px solid var(--gris2);border-radius:8px;font-family:var(--font);font-size:13px;outline:none;transition:border-color .15s;background:var(--blanco);}
+.search-box:focus{border-color:var(--amarillo);}
+.filter-sel{padding:9px 14px;border:2px solid var(--gris2);border-radius:8px;font-family:var(--font);font-size:12px;outline:none;background:var(--blanco);cursor:pointer;}
+.filter-sel:focus{border-color:var(--amarillo);}
+
+/* ── EDIT CELL ── */
+.editable{outline:none;border-bottom:1.5px solid transparent;cursor:text;transition:border-color .15s;min-width:40px;display:inline-block;}
+.editable:focus{border-bottom-color:var(--amarillo);background:rgba(255,208,0,.08);border-radius:2px;}
+.editable:hover:not(:focus){border-bottom-color:var(--gris3);}
+
+/* ── BTN ── */
+.btn{display:inline-flex;align-items:center;gap:6px;padding:9px 18px;border-radius:8px;border:2px solid transparent;font-family:var(--font);font-size:12px;font-weight:700;cursor:pointer;transition:all .15s;}
+.btn-primary{background:var(--negro);color:var(--blanco);border-color:var(--negro);}
+.btn-primary:hover{background:var(--carbon);}
+.btn-yellow{background:var(--amarillo);color:var(--negro);border-color:var(--amarillo);}
+.btn-yellow:hover{background:var(--ambar);}
+.btn-ghost{background:transparent;color:var(--muted);border-color:var(--gris2);}
+.btn-ghost:hover{border-color:var(--negro);color:var(--negro);}
+.btn-danger{background:transparent;color:#ef4444;border-color:#fca5a5;}
+.btn-danger:hover{background:#fee2e2;}
+.btn-sm{padding:5px 12px;font-size:11px;}
+
+/* ── MOVIMIENTO FORM ── */
+.mov-form{background:var(--gris);border:2px dashed var(--gris2);border-radius:10px;padding:16px;margin-bottom:16px;display:none;}
+.mov-form.open{display:block;}
+.mov-form-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:10px;align-items:end;}
+.fg label{display:block;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--amarillo);background:var(--negro);padding:2px 6px;border-radius:3px 3px 0 0;display:inline-block;margin-bottom:2px;}
+.fg input,.fg select{width:100%;padding:9px 12px;border:2px solid var(--gris2);border-radius:0 8px 8px 8px;font-family:var(--font);font-size:13px;outline:none;transition:border-color .15s;background:var(--blanco);}
+.fg input:focus,.fg select:focus{border-color:var(--amarillo);}
+
+/* ── TOTAL ROW ── */
+.total-row td{background:var(--negro);color:var(--amarillo);font-weight:800;font-family:var(--mono);border-top:2px solid var(--amarillo);}
+
+/* ── RESUMEN CAJA ── */
+.caja-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-bottom:20px;}
+.caja-card{border-radius:10px;padding:14px 16px;text-align:center;border:2px solid;}
+.caja-card.ing{background:#f0fdf4;border-color:#86efac;}
+.caja-card.egr{background:#fff1f2;border-color:#fca5a5;}
+.caja-card.tot{background:var(--negro);border-color:var(--amarillo);}
+.caja-card .cc-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:inherit;opacity:.7;margin-bottom:4px;}
+.caja-card .cc-val{font-size:20px;font-weight:800;font-family:var(--mono);}
+.caja-card.ing .cc-val{color:#166534;}
+.caja-card.egr .cc-val{color:#991b1b;}
+.caja-card.tot .cc-val{color:var(--amarillo);}
+
+/* ── BADGE ── */
+.badge{display:inline-block;padding:2px 8px;border-radius:4px;font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;}
+.badge-ok{background:#dcfce7;color:#166534;}
+.badge-warn{background:#fef9c3;color:#854d0e;}
+.badge-neg{background:#fee2e2;color:#991b1b;}
+
+/* ── TOAST ── */
+.toast{position:fixed;bottom:24px;right:24px;background:var(--negro);border:2px solid var(--amarillo);border-radius:10px;padding:12px 20px;font-size:13px;font-weight:700;color:var(--amarillo);opacity:0;transform:translateY(8px);transition:all .25s;pointer-events:none;z-index:9999;font-family:var(--mono);}
+.toast.show{opacity:1;transform:translateY(0);}
+
+/* ── PROGRESS BAR ── */
+.prog-wrap{height:8px;background:var(--gris2);border-radius:4px;overflow:hidden;}
+.prog-fill{height:100%;background:var(--amarillo);border-radius:4px;transition:width .4s;}
+
+
+/* Fila resumen bloqueada asistencia */
+.asist-summary-row td{background:#fffbe6;font-weight:800;}
+.asist-percent-cell{font-family:var(--mono);font-weight:900;color:var(--negro);background:var(--amarillo);border-radius:6px;padding:4px 8px;display:inline-block;min-width:48px;}
+.asist-locked-note{font-size:10px;color:var(--muted);font-family:var(--mono);letter-spacing:.05em;}
+
+/* ── PRINT ── */
+@media print{.topbar,.nav-tabs,.toolbar-row,.btn,.mov-form,.month-sel{display:none!important;}body{background:white;}.card{box-shadow:none;break-inside:avoid;}}
+
+/* ── MODAL RECIBO ── */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.75);backdrop-filter:blur(6px);z-index:500;display:none;align-items:center;justify-content:center;padding:20px;}
+.modal-overlay.open{display:flex;}
+.modal-box{background:var(--blanco);border-radius:16px;width:100%;max-width:620px;max-height:92vh;overflow-y:auto;box-shadow:0 24px 60px rgba(0,0,0,0.4);animation:popIn .22s cubic-bezier(.4,0,.2,1);}
+@keyframes popIn{from{transform:scale(.94);opacity:0}to{transform:scale(1);opacity:1}}
+.modal-head{background:var(--negro);padding:16px 22px;display:flex;align-items:center;justify-content:space-between;border-radius:16px 16px 0 0;}
+.modal-head-title{font-size:14px;font-weight:800;color:var(--blanco);letter-spacing:.04em;text-transform:uppercase;display:flex;align-items:center;gap:8px;}
+.modal-head-title span{background:var(--amarillo);color:var(--negro);border-radius:4px;padding:2px 8px;font-size:11px;}
+.modal-close{background:none;border:none;color:#888;font-size:20px;cursor:pointer;line-height:1;padding:2px 6px;border-radius:4px;transition:all .15s;}
+.modal-close:hover{background:rgba(255,255,255,.1);color:var(--blanco);}
+.modal-body{padding:24px;}
+
+/* ── RECIBO PRINTABLE ── */
+.recibo{background:var(--blanco);border:2px solid var(--gris2);border-radius:12px;overflow:hidden;font-family:var(--font);}
+.recibo-header{background:var(--negro);padding:20px 24px;position:relative;overflow:hidden;}
+.recibo-header::before{content:'';position:absolute;top:-20px;right:-20px;width:120px;height:120px;border-radius:50%;background:rgba(255,208,0,.08);border:2px solid rgba(255,208,0,.15);}
+.recibo-header::after{content:'';position:absolute;top:10px;right:10px;width:70px;height:70px;border-radius:50%;background:rgba(255,208,0,.06);}
+.recibo-org{font-size:18px;font-weight:900;color:var(--blanco);letter-spacing:-.01em;}
+.recibo-org span{color:var(--amarillo);}
+.recibo-sub-org{font-size:11px;color:#888;font-family:var(--mono);letter-spacing:.12em;margin-top:2px;}
+.recibo-num-badge{position:absolute;top:16px;right:20px;background:var(--amarillo);color:var(--negro);border-radius:8px;padding:6px 14px;text-align:center;z-index:1;}
+.recibo-num-badge .rn-label{font-size:9px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;}
+.recibo-num-badge .rn-val{font-size:18px;font-weight:900;font-family:var(--mono);}
+.recibo-divider{height:4px;background:linear-gradient(90deg,var(--amarillo) 60%,var(--ambar));}
+.recibo-body{padding:22px 24px;}
+.recibo-section-title{font-size:9px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--amarillo);background:var(--negro);display:inline-block;padding:3px 10px;border-radius:3px;margin-bottom:12px;}
+.recibo-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px 20px;margin-bottom:18px;}
+.recibo-field{padding:8px 12px;background:var(--gris);border-radius:6px;border-left:3px solid var(--amarillo);}
+.recibo-field-label{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin-bottom:2px;}
+.recibo-field-val{font-size:13px;font-weight:700;color:var(--negro);}
+.recibo-field-val.mono{font-family:var(--mono);}
+.recibo-monto-box{background:var(--negro);border-radius:10px;padding:18px 22px;margin-bottom:18px;display:flex;align-items:center;justify-content:space-between;border:2px solid var(--amarillo);}
+.recibo-monto-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:#888;}
+.recibo-monto-val{font-size:32px;font-weight:900;color:var(--amarillo);font-family:var(--mono);}
+.recibo-meses-chips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:18px;}
+.recibo-mes-chip{padding:5px 12px;border-radius:20px;background:#dcfce7;color:#166534;border:1.5px solid #86efac;font-size:11px;font-weight:700;font-family:var(--mono);}
+.recibo-footer{background:var(--gris);border-top:2px dashed var(--gris2);padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:10px;}
+.recibo-footer-text{font-size:10px;color:var(--muted);line-height:1.6;}
+.recibo-footer-text strong{color:var(--negro);}
+.recibo-footer-seal{width:56px;height:56px;border-radius:50%;border:2px solid var(--gris2);display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0;}
+.recibo-copy-note{text-align:center;font-size:9px;font-family:var(--mono);color:var(--gris3);letter-spacing:.1em;text-transform:uppercase;margin-top:10px;padding:8px;border-top:1px dashed var(--gris2);}
+.recibo-actions{display:flex;gap:8px;margin-top:16px;justify-content:flex-end;}
+
+/* Historial recibos */
+.recibo-hist-item{display:flex;align-items:center;gap:10px;padding:10px 14px;border-bottom:1px solid var(--gris2);transition:background .12s;cursor:pointer;}
+.recibo-hist-item:hover{background:rgba(255,208,0,.05);}
+.recibo-hist-item:last-child{border-bottom:none;}
+.rhi-badge{width:36px;height:36px;border-radius:8px;background:var(--amarillo);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;}
+.rhi-info{flex:1;}
+.rhi-name{font-size:13px;font-weight:700;}
+.rhi-meta{font-size:11px;color:var(--muted);font-family:var(--mono);}
+.rhi-monto{font-family:var(--mono);font-size:13px;font-weight:800;color:#166534;}
+
+@media print {
+  body > *:not(#recibo-print-area) { display: none !important; }
+  #recibo-print-area { display: block !important; position: fixed; inset: 0; padding: 20px; background: white; z-index: 9999; }
+  #recibo-print-area .recibo { box-shadow: none; }
+}
+
+/* ── LOGIN SCREEN ── */
+#login-screen{
+  position:fixed;inset:0;z-index:9999;
+  background:var(--negro);
+  display:flex;align-items:center;justify-content:center;
+  flex-direction:column;
+  overflow:hidden;
+}
+#login-screen.hidden{display:none;}
+
+/* Fondo animado partículas */
+.login-bg{position:absolute;inset:0;overflow:hidden;pointer-events:none;}
+.login-bg-circle{position:absolute;border-radius:50%;border:1px solid rgba(255,208,0,0.08);}
+.login-bg-circle:nth-child(1){width:600px;height:600px;top:-200px;right:-200px;animation:rotateSlow 40s linear infinite;}
+.login-bg-circle:nth-child(2){width:400px;height:400px;bottom:-150px;left:-100px;border-color:rgba(255,208,0,0.05);animation:rotateSlow 30s linear infinite reverse;}
+.login-bg-circle:nth-child(3){width:200px;height:200px;top:50%;left:10%;border-color:rgba(255,208,0,0.06);animation:rotateSlow 20s linear infinite;}
+.login-bg-dot{position:absolute;width:3px;height:3px;border-radius:50%;background:rgba(255,208,0,0.15);}
+@keyframes rotateSlow{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+
+/* Scan line effect */
+.login-scanline{position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,0.03) 2px,rgba(0,0,0,0.03) 4px);pointer-events:none;}
+
+.login-card{
+  position:relative;z-index:1;
+  background:var(--carbon2);
+  border:1px solid rgba(255,208,0,0.2);
+  border-radius:20px;
+  padding:44px 40px;
+  width:100%;max-width:420px;
+  box-shadow:0 0 80px rgba(255,208,0,0.06), 0 40px 80px rgba(0,0,0,0.5);
+  animation:cardIn .5s cubic-bezier(.4,0,.2,1);
+}
+@keyframes cardIn{from{transform:translateY(30px);opacity:0}to{transform:translateY(0);opacity:1}}
+
+/* Top glow line */
+.login-card::before{
+  content:'';position:absolute;top:0;left:15%;right:15%;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(255,208,0,0.6),transparent);
+  border-radius:50%;
+}
+
+/* Logo section */
+.login-logo{text-align:center;margin-bottom:32px;}
+.login-logo-icon{
+  width:72px;height:72px;background:var(--amarillo);border-radius:16px;
+  display:inline-flex;align-items:center;justify-content:center;
+  font-size:34px;margin-bottom:14px;
+  box-shadow:0 8px 32px rgba(255,208,0,0.3);
+  animation:iconPulse 3s ease-in-out infinite;
+}
+@keyframes iconPulse{0%,100%{box-shadow:0 8px 32px rgba(255,208,0,0.3)}50%{box-shadow:0 8px 48px rgba(255,208,0,0.5)}}
+.login-org{font-size:22px;font-weight:900;color:var(--blanco);letter-spacing:-.02em;}
+.login-org span{color:var(--amarillo);}
+.login-sub-org{font-size:10px;font-family:var(--mono);color:#555;letter-spacing:0.18em;text-transform:uppercase;margin-top:4px;}
+.login-divider{height:1px;background:linear-gradient(90deg,transparent,rgba(255,208,0,0.15),transparent);margin:20px 0;}
+
+/* System label */
+.login-sys-label{text-align:center;margin-bottom:24px;}
+.login-sys-tag{
+  display:inline-block;background:rgba(255,208,0,0.08);
+  border:1px solid rgba(255,208,0,0.2);border-radius:6px;
+  padding:4px 14px;font-size:10px;font-family:var(--mono);
+  color:var(--amarillo);letter-spacing:0.15em;text-transform:uppercase;
+}
+
+/* Fields */
+.login-field{margin-bottom:16px;}
+.login-field label{
+  display:block;font-size:10px;font-weight:800;
+  letter-spacing:0.18em;text-transform:uppercase;
+  color:var(--amarillo);margin-bottom:7px;font-family:var(--mono);
+}
+.login-field-wrap{position:relative;}
+.login-field-icon{
+  position:absolute;left:14px;top:50%;transform:translateY(-50%);
+  font-size:15px;pointer-events:none;opacity:.5;
+}
+.login-input{
+  width:100%;
+  background:rgba(255,255,255,0.05);
+  border:1.5px solid rgba(255,255,255,0.08);
+  border-radius:10px;
+  padding:13px 14px 13px 42px;
+  font-family:var(--mono);font-size:14px;
+  color:var(--blanco);
+  outline:none;
+  transition:all .2s;
+  letter-spacing:.02em;
+}
+.login-input:focus{
+  border-color:rgba(255,208,0,0.5);
+  background:rgba(255,208,0,0.04);
+  box-shadow:0 0 0 3px rgba(255,208,0,0.08);
+}
+.login-input::placeholder{color:#333;letter-spacing:0;}
+
+/* Eye toggle */
+.eye-toggle{
+  position:absolute;right:14px;top:50%;transform:translateY(-50%);
+  background:none;border:none;cursor:pointer;color:#444;
+  font-size:16px;padding:4px;transition:color .15s;
+}
+.eye-toggle:hover{color:var(--amarillo);}
+
+/* Error */
+.login-err{
+  display:flex;align-items:center;gap:8px;
+  background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.25);
+  border-radius:8px;padding:10px 14px;
+  font-size:12px;font-weight:700;color:#f87171;
+  font-family:var(--mono);margin-bottom:16px;
+  display:none;
+  animation:shakeErr .4s ease;
+}
+.login-err.show{display:flex;}
+@keyframes shakeErr{0%,100%{transform:translateX(0)}20%,60%{transform:translateX(-6px)}40%,80%{transform:translateX(6px)}}
+
+/* Button */
+.login-btn{
+  width:100%;padding:15px;margin-top:6px;
+  background:var(--amarillo);border:none;border-radius:12px;
+  color:var(--negro);font-family:var(--font);
+  font-size:15px;font-weight:900;letter-spacing:.04em;
+  cursor:pointer;transition:all .2s;
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  box-shadow:0 4px 20px rgba(255,208,0,0.25);
+}
+.login-btn:hover{background:#ffe033;transform:translateY(-2px);box-shadow:0 8px 32px rgba(255,208,0,0.35);}
+.login-btn:active{transform:translateY(0);}
+.login-btn:disabled{opacity:.5;cursor:not-allowed;transform:none;}
+.login-btn-spinner{width:16px;height:16px;border:2.5px solid rgba(0,0,0,0.2);border-top-color:var(--negro);border-radius:50%;animation:spin .6s linear infinite;display:none;}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* Bottom footer */
+.login-footer{
+  position:relative;z-index:1;
+  margin-top:24px;text-align:center;
+  font-size:10px;font-family:var(--mono);
+  color:#333;letter-spacing:0.1em;text-transform:uppercase;
+}
+.login-footer strong{color:#444;}
+
+/* ── APP WRAPPER initially hidden ── */
+#app-wrapper{display:none;}
+#app-wrapper.visible{display:block;}
+
+/* Logout btn in topbar */
+.logout-btn{
+  background:none;border:1px solid rgba(255,208,0,0.2);
+  border-radius:6px;color:var(--amarillo);
+  font-family:var(--mono);font-size:10px;font-weight:700;
+  letter-spacing:.1em;padding:5px 12px;cursor:pointer;
+  transition:all .15s;text-transform:uppercase;
+}
+.logout-btn:hover{background:rgba(255,208,0,0.1);border-color:var(--amarillo);}
+
+
+/* ── IMPRESIÓN CORREGIDA ── */
+.print-only-title{display:none;}
+@media print {
+  @page{size:A4 landscape;margin:10mm;}
+  body:not(.printing-recibo){background:#fff!important;color:#000!important;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  body:not(.printing-recibo) > *:not(#app-wrapper){display:none!important;}
+  body:not(.printing-recibo) #app-wrapper{display:block!important;}
+  body:not(.printing-recibo) .topbar,
+  body:not(.printing-recibo) .nav-tabs,
+  body:not(.printing-recibo) .toolbar-row,
+  body:not(.printing-recibo) .btn,
+  body:not(.printing-recibo) .mov-form,
+  body:not(.printing-recibo) .month-sel,
+  body:not(.printing-recibo) .modal-overlay,
+  body:not(.printing-recibo) #recibo-print-area{display:none!important;}
+  body:not(.printing-recibo) .page{max-width:none!important;margin:0!important;padding:0!important;}
+  body:not(.printing-recibo) .panel{display:none!important;opacity:1!important;transform:none!important;}
+  body:not(.printing-recibo) .panel.active{display:block!important;}
+  body:not(.printing-recibo) .sec-head{display:block!important;margin-bottom:8px!important;}
+  body:not(.printing-recibo) .sec-title{font-size:18px!important;color:#000!important;}
+  body:not(.printing-recibo) .sec-sub{font-size:10px!important;color:#333!important;}
+  body:not(.printing-recibo) .kpi-grid,
+  body:not(.printing-recibo) .caja-grid{grid-template-columns:repeat(4,1fr)!important;gap:6px!important;margin-bottom:8px!important;}
+  body:not(.printing-recibo) .kpi,
+  body:not(.printing-recibo) .caja-card,
+  body:not(.printing-recibo) .card{box-shadow:none!important;border:1px solid #bbb!important;break-inside:avoid;page-break-inside:avoid;background:#fff!important;}
+  body:not(.printing-recibo) .kpi{padding:8px!important;}
+  body:not(.printing-recibo) .kpi-val{font-size:16px!important;color:#000!important;}
+  body:not(.printing-recibo) .card-head{background:#111!important;color:#fff!important;padding:6px 8px!important;}
+  body:not(.printing-recibo) .card-body{padding:6px!important;}
+  body:not(.printing-recibo) .tbl-wrap{overflow:visible!important;}
+  body:not(.printing-recibo) table{width:100%!important;border-collapse:collapse!important;font-size:9px!important;table-layout:auto!important;}
+  body:not(.printing-recibo) th,
+  body:not(.printing-recibo) td{border:1px solid #999!important;padding:3px 4px!important;color:#000!important;white-space:normal!important;}
+  body:not(.printing-recibo) thead th{background:#111!important;color:#FFD000!important;}
+  body:not(.printing-recibo) .chip{width:auto!important;min-width:18px!important;height:17px!important;font-size:8px!important;transform:none!important;}
+  body:not(.printing-recibo) .editable{border:0!important;background:transparent!important;color:#000!important;}
+  body:not(.printing-recibo) .print-only-title{display:block!important;text-align:center;font-weight:800;font-size:16px;margin-bottom:8px;}
+  body.printing-recibo > *:not(#recibo-print-area){display:none!important;}
+  body.printing-recibo #recibo-print-area{display:block!important;position:fixed;inset:0;padding:20px;background:white;z-index:9999;}
+}
+
+</style>
+</head>
+<body>
+
+<!-- ════════════ LOGIN SCREEN ════════════ -->
+<div id="login-screen">
+  <div class="login-bg">
+    <div class="login-bg-circle"></div>
+    <div class="login-bg-circle"></div>
+    <div class="login-bg-circle"></div>
+    <!-- dots -->
+    <div class="login-bg-dot" style="top:15%;left:20%;"></div>
+    <div class="login-bg-dot" style="top:70%;left:80%;"></div>
+    <div class="login-bg-dot" style="top:40%;left:60%;"></div>
+    <div class="login-bg-dot" style="top:80%;left:30%;"></div>
+    <div class="login-bg-dot" style="top:25%;left:75%;"></div>
+  </div>
+  <div class="login-scanline"></div>
+
+  <div class="login-card">
+    <!-- Logo -->
+    <div class="login-logo">
+      <div class="login-logo-icon">⛪</div>
+      <div class="login-org">IEP <span>Machalí</span></div>
+      <div class="login-sub-org">Iglesia Evangélica Pentecostal</div>
+    </div>
+
+    <div class="login-divider"></div>
+
+    <div class="login-sys-label">
+      <span class="login-sys-tag">⚡ Sistema de Voluntarios — 2026</span>
+    </div>
+
+    <!-- Error -->
+    <div class="login-err" id="login-err">
+      <span>⚠</span> <span id="login-err-txt">Credenciales incorrectas</span>
+    </div>
+
+    <!-- Form -->
+    <div class="login-field">
+      <label>Usuario</label>
+      <div class="login-field-wrap">
+        <span class="login-field-icon">👤</span>
+        <input type="text" class="login-input" id="inp-user" placeholder="Ingresa tu usuario" autocomplete="username" onkeydown="if(event.key==='Enter')doLogin()">
+      </div>
+    </div>
+
+    <div class="login-field">
+      <label>Contraseña</label>
+      <div class="login-field-wrap">
+        <span class="login-field-icon">🔒</span>
+        <input type="password" class="login-input" id="inp-pass" placeholder="••••••••••••" autocomplete="current-password" onkeydown="if(event.key==='Enter')doLogin()">
+        <button class="eye-toggle" type="button" onclick="togglePass()" id="eye-btn" title="Mostrar/ocultar contraseña">👁</button>
+      </div>
+    </div>
+
+    <button class="login-btn" id="login-btn" onclick="doLogin()">
+      <div class="login-btn-spinner" id="login-spinner"></div>
+      <span id="login-btn-txt">🔐 Iniciar Sesión</span>
+    </button>
+  </div>
+
+  <div class="login-footer">
+    <strong>Cuerpo de Voluntarios IEP Machalí</strong> · Tesorería 2026<br>
+    Acceso restringido · Solo personal autorizado
+  </div>
+</div>
+
+<!-- ════════════ APP (oculto hasta login) ════════════ -->
+<div id="app-wrapper">
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="topbar-brand">
+    <div class="topbar-icon">⛪</div>
+    <div>
+      <div class="topbar-name">Cuerpo de <span>Voluntarios</span></div>
+      <div class="topbar-sub">IEP Machalí · Tesorería 2026</div>
+    </div>
+  </div>
+  <div style="display:flex;align-items:center;gap:12px;">
+    <div class="topbar-right" id="live-clock"></div>
+    <button class="logout-btn" onclick="doLogout()" title="Cerrar sesión">🚪 Cerrar sesión</button>
+  </div>
+</div>
+
+<!-- NAV TABS -->
+<div class="nav-tabs">
+  <button class="nav-tab active" onclick="switchTab('gastos',this)">💰 Control de Gastos</button>
+  <button class="nav-tab" onclick="switchTab('asistencia',this)">📋 Asistencia</button>
+  <button class="nav-tab" onclick="switchTab('cuotas',this)">💳 Cuotas 2026</button>
+  <button class="nav-tab" onclick="switchTab('ofrendas',this)">🙏 Ofrendas</button>
+  <button class="nav-tab" onclick="switchTab('resumen',this)">📊 Resumen Anual</button>
+</div>
+
+<!-- MAIN -->
+<div class="page">
+  <div class="print-only-title">Cuerpo de Voluntarios IEP Machalí — Reporte 2026</div>
+
+  <!-- ══ PANEL: GASTOS ══ -->
+  <div class="panel active" id="panel-gastos">
+    <div class="sec-head">
+      <div>
+        <div class="sec-title">Control de Gastos</div>
+        <div class="sec-sub">Tesorería · Cuerpo de Voluntarios IEP Machalí</div>
+      </div>
+      <div style="display:flex;gap:8px;">
+        <button class="btn btn-ghost btn-sm" onclick="window.print()">🖨 Imprimir</button>
+        <button class="btn btn-yellow btn-sm" onclick="exportCSV('gastos')">⬇ CSV</button>
+      </div>
+    </div>
+
+    <!-- Month selector -->
+    <div class="month-sel" id="gastos-months"></div>
+
+    <!-- KPI row -->
+    <div class="kpi-grid" id="gastos-kpis"></div>
+
+    <!-- Caja breakdown -->
+    <div class="caja-grid" id="gastos-caja"></div>
+
+    <!-- Add movement / month buttons -->
+    <div style="display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap;">
+      <button class="btn btn-primary" onclick="toggleMovForm()">+ Agregar Movimiento</button>
+      <button class="btn btn-yellow" onclick="agregarMesGastos()">➕ Agregar Mes</button>
+    </div>
+
+    <!-- Form -->
+    <div class="mov-form" id="mov-form">
+      <div style="font-size:12px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-bottom:12px;">Nuevo Movimiento</div>
+      <div class="mov-form-grid">
+        <div class="fg"><label>Descripción</label><input type="text" id="f-desc" placeholder="Descripción del movimiento"></div>
+        <div class="fg"><label>Fecha</label><input type="date" id="f-fecha"></div>
+        <div class="fg"><label>Ingreso ($)</label><input type="number" id="f-ing" placeholder="0" min="0"></div>
+        <div class="fg"><label>Egreso ($)</label><input type="number" id="f-egr" placeholder="0" min="0"></div>
+        <div class="fg"><label>Link Boleta</label><input type="text" id="f-link" placeholder="URL o referencia"></div>
+      </div>
+      <div style="display:flex;gap:8px;margin-top:12px;">
+        <button class="btn btn-yellow" onclick="agregarMov()">✓ Guardar</button>
+        <button class="btn btn-ghost" onclick="toggleMovForm()">Cancelar</button>
+      </div>
+    </div>
+
+    <!-- Table -->
+    <div class="card">
+      <div class="card-head">
+        <div class="card-head-title">📄 Movimientos <span id="gastos-mes-label">Enero 2026</span></div>
+        <div style="font-size:11px;color:#888;font-family:var(--mono);">Haz clic en cualquier celda para editar</div>
+      </div>
+      <div class="card-body">
+        <div class="tbl-wrap">
+          <table id="gastos-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Descripción</th>
+                <th>Fecha</th>
+                <th style="text-align:right">Ingreso</th>
+                <th style="text-align:right">Egreso</th>
+                <th>Link Boleta</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="gastos-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ PANEL: ASISTENCIA ══ -->
+  <div class="panel" id="panel-asistencia">
+    <div class="sec-head">
+      <div>
+        <div class="sec-title">Control de Asistencia 2026</div>
+        <div class="sec-sub">Reuniones Mensuales · Cuerpo de Voluntarios</div>
+      </div>
+      <div style="display:flex;gap:8px;">
+        <button class="btn btn-ghost btn-sm" onclick="window.print()">🖨 Imprimir</button>
+        <button class="btn btn-yellow btn-sm" onclick="exportCSV('asistencia')">⬇ CSV</button>
+      </div>
+    </div>
+
+    <!-- KPI asistencia -->
+    <div class="kpi-grid" id="asist-kpis"></div>
+
+    <!-- Legend -->
+    <div class="legend">
+      <span style="font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;">Referencia:</span>
+      <div class="leg-item"><span class="chip chip-P">P</span> Presente</div>
+      <div class="leg-item"><span class="chip chip-A">A</span> Ausente</div>
+      <div class="leg-item"><span class="chip chip-E">E</span> Excusado</div>
+      <div class="leg-item"><span class="chip chip-T">T</span> Tardanza</div>
+      <div class="leg-item"><span class="chip chip-M">M</span> Médico</div>
+      <div class="leg-item"><span class="chip chip-x">·</span> Sin dato</div>
+    </div>
+
+    <div class="toolbar-row">
+      <input type="text" class="search-box" id="asist-search" placeholder="🔍 Buscar voluntario…" oninput="renderAsistencia()">
+      <select class="filter-sel" id="asist-filter" onchange="renderAsistencia()">
+        <option value="">Todos los meses</option>
+      </select>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <div class="card-head-title">📋 Registro de Asistencia <span id="asist-count">0</span></div>
+        <div style="font-size:11px;color:#888;font-family:var(--mono);">Haz clic en un chip para cambiar el estado</div>
+      </div>
+      <div class="card-body" style="padding:0;">
+        <div class="tbl-wrap">
+          <table id="asist-table">
+            <thead id="asist-thead"></thead>
+            <tbody id="asist-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ PANEL: CUOTAS ══ -->
+  <div class="panel" id="panel-cuotas">
+    <div class="sec-head">
+      <div>
+        <div class="sec-title">Control de Cuotas 2026</div>
+        <div class="sec-sub">Aportes mensuales de voluntarios</div>
+      </div>
+      <div style="display:flex;gap:8px;align-items:center;">
+        <span id="recibos-badge" style="display:none;background:var(--amarillo);color:var(--negro);border-radius:20px;padding:3px 12px;font-size:11px;font-weight:800;font-family:var(--mono);cursor:pointer;" onclick="openHistorial()">🧾 <span id="recibos-count">0</span> recibos</span>
+        <button class="btn btn-primary btn-sm" onclick="openRegistrarPago()">🧾 Emitir Recibo</button>
+        <button class="btn btn-ghost btn-sm" onclick="window.print()">🖨 Imprimir</button>
+        <button class="btn btn-yellow btn-sm" onclick="exportCSV('cuotas')">⬇ CSV</button>
+      </div>
+    </div>
+    <div class="kpi-grid" id="cuotas-kpis"></div>
+    <div class="toolbar-row">
+      <input type="text" class="search-box" id="cuotas-search" placeholder="🔍 Buscar voluntario…" oninput="renderCuotas()">
+    </div>
+    <div class="card">
+      <div class="card-head">
+        <div class="card-head-title">💳 Cuotas por Voluntario <span id="cuotas-count">0</span></div>
+        <div style="font-size:11px;color:#888;font-family:var(--mono);">Haz clic en celdas para editar montos</div>
+      </div>
+      <div class="card-body" style="padding:0;">
+        <div class="tbl-wrap">
+          <table id="cuotas-table">
+            <thead id="cuotas-thead"></thead>
+            <tbody id="cuotas-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ PANEL: OFRENDAS ══ -->
+  <div class="panel" id="panel-ofrendas">
+    <div class="sec-head">
+      <div>
+        <div class="sec-title">Ofrendas Reuniones Mensuales</div>
+        <div class="sec-sub">Recaudación por reunión mensual</div>
+      </div>
+      <button class="btn btn-yellow btn-sm" onclick="exportCSV('ofrendas')">⬇ CSV</button>
+    </div>
+    <div class="kpi-grid" id="ofrendas-kpis"></div>
+    <div class="card">
+      <div class="card-head"><div class="card-head-title">🙏 Detalle Ofrendas Mensuales 2026</div></div>
+      <div class="card-body" style="padding:0;">
+        <div class="tbl-wrap">
+          <table id="ofrendas-table">
+            <thead></thead>
+            <tbody id="ofrendas-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <!-- Chart bars -->
+    <div class="card" style="margin-top:16px;">
+      <div class="card-head"><div class="card-head-title">📊 Gráfico Barras — Ofrendas 2026</div></div>
+      <div class="card-body">
+        <div id="ofrendas-chart" style="display:flex;align-items:flex-end;gap:8px;height:160px;padding:10px 0;"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ PANEL: RESUMEN ══ -->
+  <div class="panel" id="panel-resumen">
+    <div class="sec-head">
+      <div>
+        <div class="sec-title">Resumen Anual 2026</div>
+        <div class="sec-sub">Consolidado tesorería · Cuerpo de Voluntarios IEP Machalí</div>
+      </div>
+      <div style="display:flex;gap:8px;"><button class="btn btn-ghost btn-sm" onclick="window.print()">🖨 Imprimir</button><button class="btn btn-yellow btn-sm" onclick="exportCSV('resumen')">⬇ CSV</button><button class="btn btn-danger btn-sm" onclick="resetAppData()">↺ Restaurar</button></div>
+    </div>
+    <div class="kpi-grid" id="resumen-kpis"></div>
+    <div class="card">
+      <div class="card-head"><div class="card-head-title">📈 Comparativo por Mes</div></div>
+      <div class="card-body" style="padding:0;">
+        <div class="tbl-wrap">
+          <table id="resumen-table"></table>
+        </div>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+      <div class="card">
+        <div class="card-head"><div class="card-head-title">🏆 Progreso Asistencia</div></div>
+        <div class="card-body" id="resumen-asist"></div>
+      </div>
+      <div class="card">
+        <div class="card-head"><div class="card-head-title">💰 Progreso Cuotas</div></div>
+        <div class="card-body" id="resumen-cuotas-prog"></div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /page -->
+
+<div class="toast" id="toast"></div>
+<!-- ════ MODAL: EMITIR RECIBO MANUAL ════ -->
+<div class="modal-overlay" id="modal-recibo-form">
+  <div class="modal-box">
+    <div class="modal-head">
+      <div class="modal-head-title">🧾 Emitir Recibo de Pago <span>CUOTAS 2026</span></div>
+      <button class="modal-close" onclick="closeModal('modal-recibo-form')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px;">
+        <div class="fg">
+          <label>Voluntario</label>
+          <select id="rf-voluntario" style="width:100%;padding:9px 12px;border:2px solid var(--gris2);border-radius:0 8px 8px 8px;font-family:var(--font);font-size:13px;outline:none;background:var(--blanco);" onchange="updateMontoPreview()"></select>
+        </div>
+        <div class="fg">
+          <label>Tesorero / Cajero</label>
+          <input type="text" id="rf-tesorero" value="Tesorero IEP Machalí" placeholder="Nombre del tesorero">
+        </div>
+        <div class="fg">
+          <label>Mes(es) de Pago</label>
+          <div id="rf-meses-checks" style="display:flex;flex-wrap:wrap;gap:6px;margin-top:4px;max-height:80px;overflow-y:auto;padding:2px;"></div>
+        </div>
+        <div class="fg">
+          <label>Forma de Pago</label>
+          <select id="rf-forma" style="width:100%;padding:9px 12px;border:2px solid var(--gris2);border-radius:0 8px 8px 8px;font-family:var(--font);font-size:13px;outline:none;background:var(--blanco);">
+            <option>Efectivo</option>
+            <option>Transferencia</option>
+            <option>Cheque</option>
+            <option>Débito</option>
+          </select>
+        </div>
+        <div class="fg">
+          <label>Fecha de Pago</label>
+          <input type="date" id="rf-fecha">
+        </div>
+        <div class="fg">
+          <label>N° Comprobante (opcional)</label>
+          <input type="text" id="rf-comprobante" placeholder="Ej: TRF-20250115">
+        </div>
+      </div>
+      <div style="background:var(--negro);border-radius:10px;padding:14px 18px;margin-bottom:14px;display:flex;align-items:center;justify-content:space-between;border:2px solid var(--amarillo);">
+        <span style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#888;">Monto Total a Recibir</span>
+        <span id="rf-monto-preview" style="font-size:28px;font-weight:900;color:var(--amarillo);font-family:var(--mono);">$ 0</span>
+      </div>
+      <div style="display:flex;gap:8px;justify-content:flex-end;">
+        <button class="btn btn-ghost" onclick="closeModal('modal-recibo-form')">Cancelar</button>
+        <button class="btn btn-yellow" onclick="generarRecibo()">🧾 Generar Recibo</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════ MODAL: VER RECIBO ════ -->
+<div class="modal-overlay" id="modal-recibo-ver">
+  <div class="modal-box">
+    <div class="modal-head">
+      <div class="modal-head-title">🧾 Recibo de Pago <span id="recibo-num-header">N° 0001</span></div>
+      <button class="modal-close" onclick="closeModal('modal-recibo-ver')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div id="recibo-render"></div>
+      <div class="recibo-actions">
+        <button class="btn btn-ghost" onclick="closeModal('modal-recibo-ver')">Cerrar</button>
+        <button class="btn btn-ghost" onclick="copiarRecibo()">📋 Copiar texto</button>
+        <button class="btn btn-primary" onclick="imprimirRecibo()">🖨 Imprimir</button>
+        <button class="btn btn-yellow" onclick="descargarReciboHTML()">⬇ Descargar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════ MODAL: HISTORIAL RECIBOS ════ -->
+<div class="modal-overlay" id="modal-historial">
+  <div class="modal-box">
+    <div class="modal-head">
+      <div class="modal-head-title">📚 Historial de Recibos <span id="hist-count-badge">0</span></div>
+      <button class="modal-close" onclick="closeModal('modal-historial')">✕</button>
+    </div>
+    <div class="modal-body" style="padding:0;">
+      <div id="historial-list"></div>
+      <div style="padding:14px;border-top:1px solid var(--gris2);display:flex;gap:8px;justify-content:flex-end;">
+        <button class="btn btn-danger btn-sm" onclick="limpiarHistorial()">🗑 Limpiar historial</button>
+        <button class="btn btn-yellow btn-sm" onclick="exportarHistorial()">⬇ Exportar CSV</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PRINT AREA -->
+<div id="recibo-print-area" style="display:none;"></div>
+
+
+<script>
+// ══════════════════════════════════════════════
+//  DATA
+// ══════════════════════════════════════════════
+const RAW = {"asistencia": [{"num": "1", "nombre": "Pastor Eliazar Pizarro Rojas", "meses": ["P", "P", "P", "P", "P", "", "", "", "", "", "", ""]}, {"num": "2", "nombre": "Benjamín Acuña", "meses": ["A", "P", "P", "P", "A", "", "", "", "", "", "", ""]}, {"num": "3", "nombre": "Cristian Vaquez", "meses": ["P", "P", "P", "P", "P", "", "", "", "", "", "", ""]}, {"num": "4", "nombre": "Daniel Calderon", "meses": ["P", "E", "A", "A", "P", "", "", "", "", "", "", ""]}, {"num": "5", "nombre": "Daniel Diaz Benito", "meses": ["P", "A", "A", "P", "P", "", "", "", "", "", "", ""]}, {"num": "6", "nombre": "Daniel Díaz Godoy", "meses": ["P", "P", "P", "P", "P", "", "", "", "", "", "", ""]}, {"num": "7", "nombre": "Daniel Gajardo Arias", "meses": ["P", "P", "P", "P", "A", "", "", "", "", "", "", ""]}, {"num": "8", "nombre": "Edgardo Toro Carrasco", "meses": ["A", "P", "P", "P", "A", "", "", "", "", "", "", ""]}, {"num": "9", "nombre": "Eduardo Gajardo", "meses": ["A", "P", "P", "P", "A", "", "", "", "", "", "", ""]}, {"num": "10", "nombre": "Eduardo López", "meses": ["P", "P", "P", "P", "P", "", "", "", "", "", "", ""]}, {"num": "11", "nombre": "Eliazar Pizarro Godoy", "meses": ["P", "P", "P", "P", "P", "", "", "", "", "", "", ""]}, {"num": "12", "nombre": "Enoc Lemus", "meses": ["P", "P", "P", "P", "P", "", "", "", "", "", "", ""]}, {"num": "13", "nombre": "Esteban Teran", "meses": ["A", "A", "P", "P", "M", "", "", "", "", "", "", ""]}, {"num": "14", "nombre": "Felipe Orellana Barraza", "meses": ["A", "A", "T", "T", "P", "", "", "", "", "", "", ""]}, {"num": "15", "nombre": "Fernando Barraza", "meses": ["P", "P", "P", "T", "T", "", "", "", "", "", "", ""]}, {"num": "16", "nombre": "Fernando Quintanilla", "meses": ["", "", "", "", "P", "", "", "", "", "", "", ""]}, {"num": "17", "nombre": "Francisco Lavin", "meses": ["P", "T", "P", "P", "P", "", "", "", "", "", "", ""]}, {"num": "18", "nombre": "Francisco Veliz Barraza", "meses": ["A", "P", "P", "P", "P", "", "", "", "", "", "", ""]}, {"num": "19", "nombre": "Héctor San Martín Alamzabal", "meses": ["P", "P", "P", "A", "P", "", "", "", "", "", "", ""]}, {"num": "20", "nombre": "Hector San Martin Leiva", "meses": ["A", "P", "P", "A", "M", "", "", "", "", "", "", ""]}, {"num": "21", "nombre": "Hugo Acosta", "meses": ["A", "T", "A", "T", "P", "", "", "", "", "", "", ""]}, {"num": "22", "nombre": "Ingancio Rivera", "meses": ["P", "P", "P", "P", "P", "", "", "", "", "", "", ""]}, {"num": "23", "nombre": "Ismael Pizarro Godoy", "meses": ["P", "P", "P", "P", "P", "", "", "", "", "", "", ""]}, {"num": "24", "nombre": "Ivan Troncoso Diaz", "meses": ["A", "A", "P", "P", "A", "", "", "", "", "", "", ""]}, {"num": "25", "nombre": "John Vergara", "meses": ["A", "P", "A", "T", "P", "", "", "", "", "", "", ""]}, {"num": "26", "nombre": "Jonathan Fuentes", "meses": ["A", "P", "A", "T", "P", "", "", "", "", "", "", ""]}, {"num": "27", "nombre": "Jorge Herrera", "meses": ["A", "P", "A", "P", "E", "", "", "", "", "", "", ""]}, {"num": "28", "nombre": "Jorge Simón Gonzalez", "meses": ["A", "A", "A", "T", "A", "", "", "", "", "", "", ""]}, {"num": "29", "nombre": "Jose Orellana Barraza", "meses": ["P", "P", "P", "P", "P", "", "", "", "", "", "", ""]}, {"num": "30", "nombre": "Juan Carlos Aguilera", "meses": ["P", "P", "P", "P", "P", "", "", "", "", "", "", ""]}, {"num": "31", "nombre": "Juan Fuentes", "meses": ["A", "A", "P", "A", "P", "", "", "", "", "", "", ""]}, {"num": "32", "nombre": "Juan Gonzalez", "meses": ["A", "P", "P", "P", "A", "", "", "", "", "", "", ""]}, {"num": "33", "nombre": "Juan Orellana Gómez", "meses": ["P", "P", "A", "A", "A", "", "", "", "", "", "", ""]}, {"num": "34", "nombre": "Leonardo Gajardo Arias", "meses": ["P", "P", "P", "P", "P", "", "", "", "", "", "", ""]}, {"num": "35", "nombre": "Luis Valenzuela Alarcón", "meses": ["A", "P", "P", "A", "P", "", "", "", "", "", "", ""]}, {"num": "36", "nombre": "Luis Valenzuela Vásquez", "meses": ["A", "A", "P", "P", "A", "", "", "", "", "", "", ""]}, {"num": "37", "nombre": "Manuel López", "meses": ["P", "P", "P", "A", "P", "", "", "", "", "", "", ""]}, {"num": "38", "nombre": "Marco Coroseo", "meses": ["E", "E", "E", "P", "A", "", "", "", "", "", "", ""]}, {"num": "39", "nombre": "Mario Betancur", "meses": ["A", "A", "A", "P", "A", "", "", "", "", "", "", ""]}, {"num": "40", "nombre": "Matias Riffo", "meses": ["P", "P", "A", "P", "A", "", "", "", "", "", "", ""]}, {"num": "41", "nombre": "Mauricio Neira", "meses": ["A", "A", "A", "A", "A", "", "", "", "", "", "", ""]}, {"num": "42", "nombre": "Mauricio Suárez Sandoval", "meses": ["P", "T", "P", "P", "A", "", "", "", "", "", "", ""]}, {"num": "43", "nombre": "Miguel Gajardo", "meses": ["A", "A", "P", "P", "A", "", "", "", "", "", "", ""]}, {"num": "44", "nombre": "Moises Figueroa", "meses": ["A", "P", "P", "P", "A", "", "", "", "", "", "", ""]}, {"num": "45", "nombre": "Obed Rosas", "meses": ["A", "A", "A", "T", "P", "", "", "", "", "", "", ""]}, {"num": "46", "nombre": "Quirino Jeréz", "meses": ["A", "A", "A", "A", "A", "", "", "", "", "", "", ""]}, {"num": "47", "nombre": "Roberto Martinez", "meses": ["A", "A", "A", "A", "A", "", "", "", "", "", "", ""]}, {"num": "48", "nombre": "Rodrigo Moreno Troncoso", "meses": ["P", "A", "P", "A", "A", "", "", "", "", "", "", ""]}, {"num": "49", "nombre": "Rolando Colilguan", "meses": ["P", "P", "P", "A", "P", "", "", "", "", "", "", ""]}, {"num": "50", "nombre": "Samuel Acevedo", "meses": ["P", "P", "A", "P", "A", "", "", "", "", "", "", ""]}, {"num": "51", "nombre": "Samuel Barraza", "meses": ["A", "P", "A", "P", "A", "", "", "", "", "", "", ""]}, {"num": "52", "nombre": "Sergio Díaz Godoy", "meses": ["T", "P", "T", "T", "T", "", "", "", "", "", "", ""]}, {"num": "53", "nombre": "Sergio Palma", "meses": ["A", "A", "T", "T", "A", "", "", "", "", "", "", ""]}, {"num": "54", "nombre": "Venericio Ubilla", "meses": ["P", "P", "P", "P", "P", "", "", "", "", "", "", ""]}, {"num": "55", "nombre": "Victor Calderón", "meses": ["P", "A", "P", "P", "M", "", "", "", "", "", "", ""]}, {"num": "56", "nombre": "Fernando Quintanilla", "meses": ["", "", "", "", "P", "", "", "", "", "", "", ""]}, {"num": "57", "nombre": "hugo Abarca", "meses": ["", "", "", "", "P", "", "", "", "", "", "", ""]}, {"num": "58", "nombre": "Victor Lara", "meses": ["P", "P", "A", "P", "A", "", "", "", "", "", "", ""]}, {"num": "", "nombre": "TOTAL PRESENTES", "meses": ["26", "34", "33", "33", "28", "0", "0", "0", "0", "0", "0", "0"]}, {"num": "", "nombre": "Porcentaje asistencia", "meses": ["0.4482758620689655", "0.5862068965517241", "0.5689655172413793", "0.5689655172413793", "0.4827586206896552", "0", "0", "0", "0", "0", "0", "0"]}], "cuotas2026": [{"num": "1", "nombre": "Pastor Eliazar Pizarro Rojas", "meses": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, {"num": "2", "nombre": "Benjamín Acuña", "meses": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, {"num": "3", "nombre": "Daniel Calderon", "meses": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, {"num": "4", "nombre": "Daniel Diaz Benito", "meses": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, {"num": "5", "nombre": "Daniel Díaz Godoy", "meses": [4000, 0, 0, 0, 8000, 0, 0, 0, 0, 0, 0, 0]}, {"num": "6", "nombre": "Daniel Gajardo Arias", "meses": [60000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, {"num": "7", "nombre": "Edgardo Toro Carrasco", "meses": [0, 8000, 4000, 0, 4000, 0, 0, 0, 0, 0, 0, 0]}, {"num": "8", "nombre": "Eduardo Gajardo", "meses": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, {"num": "9", "nombre": "Eduardo López", "meses": [0, 0, 12000, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, {"num": "10", "nombre": "Eliazar Pizarro Godoy", "meses": [0, 0, 0, 24000, 0, 0, 0, 0, 0, 0, 0, 0]}, {"num": "11", "nombre": "Enoc Lemus", "meses": [0, 4000, 0, 0, 20000, 0, 0, 0, 0, 0, 0, 0]}, {"num": "12", "nombre": "Esteban Teran", "meses": [0, 0, 12000, 4000, 4000, 0, 0, 0, 0, 0, 0, 0]}, {"num": "13", "nombre": "Felipe Orellana Barraza", "meses": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, {"num": "14", "nombre": "Cristian Vaquez", "meses": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, {"num": "15", "nombre": "Fernando Barraza", "meses": [0, 24000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, {"num": "16", "nombre": "Fernando Quintanilla", "meses": [0, 0, 0, 0, 4000, 0, 0, 0, 0, 0, 0, 0]}, {"num": "17", "nombre": "Francisco Lavin", "meses": [0, 12000, 8000, 8000, 0, 0, 0, 0, 0, 0, 0, 0]}, {"num": "18", "nombre": "Francisco Veliz Barraza", "meses": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, {"num": "19", "nombre": "Héctor San Martín Alamzabal", "meses": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, {"num": "20", "nombre": "Hugo Acosta", "meses": [0, 0, 0, 0, 20000, 0, 0, 0, 0, 0, 0, 0]}, {"num": "21", "nombre": "Ingancio Rivera", "meses": [0, 0, 8000, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, {"num": "22", "nombre": "Ismael Pizarro Godoy", "meses": [50000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, {"num": "23", "nombre": "Ivan Troncoso Diaz", "meses": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, {"num": "24", "nombre": "John Vergara", "meses": [0, 0, 0, 0, 24000, 0, 0, 0, 0, 0, 0, 0]}, {"num": "25", "nombre": "Jonathan Fuentes", "meses": [0, 0, 4000, 8000, 4000, 0, 0, 0, 0, 0, 0, 0]}, {"num": "26", "nombre": "Jorge Simón Gonzalez", "meses": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, {"num": "27", "nombre": "Jose Orellana Barraza", "meses": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, {"num": "28", "nombre": "Juan Carlos Aguilera", "meses": [4000, 4000, 4000, 4000, 0, 0, 0, 0, 0, 0, 0, 0]}, {"num": "29", "nombre": "Juan Fuentes", "meses": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, {"num": "30", "nombre": "Juan Gonzalez", "meses": [0, 0, 0, 0, 48000, 0, 0, 0, 0, 0, 0, 0]}, {"num": "31", "nombre": "Juan Orellana Gómez", "meses": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, {"num": "32", "nombre": "Leonardo Gajardo Arias", "meses": [48000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, {"num": "33", "nombre": "Luis Valenzuela Alarcón", "meses": [0, 0, 8000, 0, 4000, 0, 0, 0, 0, 0, 0, 0]}, {"num": "34", "nombre": "Luis Valenzuela Vásquez", "meses": [0, 0, 4000, 8000, 0, 0, 0, 0, 0, 0, 0, 0]}, {"num": "35", "nombre": "Manuel López", "meses": [0, 4000, 8000, 4000, 0, 0, 0, 0, 0, 0, 0, 0]}, {"num": "36", "nombre": "Marco Coroseo", "meses": [0, 0, 48000, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, {"num": "37", "nombre": "Mario Betancur", "meses": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, {"num": "38", "nombre": "Matias Riffo", "meses": [0, 0, 8000, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, {"num": "39", "nombre": "Mauricio Neira", "meses": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, {"num": "40", "nombre": "Mauricio Suárez Sandoval", "meses": [20000, 0, 0, 8000, 0, 0, 0, 0, 0, 0, 0, 0]}, {"num": "41", "nombre": "Miguel Gajardo", "meses": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, {"num": "42", "nombre": "Moises figueroa", "meses": [0, 0, 0, 16000, 0, 0, 0, 0, 0, 0, 0, 0]}, {"num": "43", "nombre": "Obed Rosas", "meses": [0, 0, 16000, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, {"num": "44", "nombre": "Quirino Jeréz", "meses": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, {"num": "45", "nombre": "Roberto Martinez", "meses": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, {"num": "46", "nombre": "Rodrigo Moreno Troncoso", "meses": [0, 0, 48000, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, {"num": "47", "nombre": "Rolando Colilguan", "meses": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, {"num": "48", "nombre": "Samuel Acevedo", "meses": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, {"num": "49", "nombre": "Samuel Barraza", "meses": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, {"num": "50", "nombre": "Sergio Díaz Godoy", "meses": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, {"num": "51", "nombre": "Sergio Palma", "meses": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, {"num": "52", "nombre": "Venericio Ubilla", "meses": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, {"num": "53", "nombre": "Victor Calderón", "meses": [0, 0, 4000, 0, 16000, 0, 0, 0, 0, 0, 0, 0]}, {"num": "54", "nombre": "Victor Lara", "meses": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}], "cuotas2025": [{"num": "1", "nombre": "Pastor Eliazar Pizarro Rojas", "meses": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, {"num": "2", "nombre": "Benjamín Acuña", "meses": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, {"num": "3", "nombre": "Daniel Calderon", "meses": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, {"num": "4", "nombre": "Daniel Diaz Benito", "meses": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, {"num": "5", "nombre": "Daniel Díaz Godoy", "meses": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, {"num": "6", "nombre": "Daniel Gajardo Arias", "meses": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, {"num": "7", "nombre": "Edgardo Toro Carrasco", "meses": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, {"num": "8", "nombre": "Eduardo Gajardo", "meses": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, {"num": "9", "nombre": "Eduardo López", "meses": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, {"num": "10", "nombre": "Eliazar Pizarro Godoy", "meses": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, {"num": "11", "nombre": "Enoc Lemus", "meses": [18000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, {"num": "12", "nombre": "Esteban Teran", "meses": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, {"num": "13", "nombre": "Felipe Orellana Barraza", "meses": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, {"num": "14", "nombre": "Cristian Vaquez", "meses": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, {"num": "15", "nombre": "Fernando Barraza", "meses": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, {"num": "16", "nombre": "Francisco Lavin", "meses": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, {"num": "17", "nombre": "Francisco Veliz Barraza", "meses": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, {"num": "18", "nombre": "Héctor San Martín Alamzabal", "meses": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, {"num": "19", "nombre": "Hugo Acosta", "meses": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, {"num": "20", "nombre": "Ingancio Rivera", "meses": [6000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, {"num": "21", "nombre": "Ismael Pizarro Godoy", "meses": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, {"num": "22", "nombre": "Ivan Troncoso Diaz", "meses": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, {"num": "23", "nombre": "Jonathan Fuentes", "meses": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, {"num": "24", "nombre": "Jorge Simón Gonzalez", "meses": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, {"num": "25", "nombre": "Jose Orellana Barraza", "meses": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, {"num": "26", "nombre": "Juan Carlos Aguilera", "meses": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, {"num": "27", "nombre": "Juan Fuentes", "meses": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, {"num": "28", "nombre": "Juan Gonzalez", "meses": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, {"num": "29", "nombre": "Juan Orellana Gómez", "meses": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, {"num": "30", "nombre": "Leonardo Gajardo Arias", "meses": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, {"num": "31", "nombre": "Luis Valenzuela Alarcón", "meses": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, {"num": "32", "nombre": "Luis Valenzuela Vásquez", "meses": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, {"num": "33", "nombre": "Manuel López", "meses": [10000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, {"num": "34", "nombre": "Marco Coroseo", "meses": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, {"num": "35", "nombre": "Mario Betancur", "meses": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, {"num": "36", "nombre": "Matias Riffo", "meses": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, {"num": "37", "nombre": "Mauricio Neira", "meses": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, {"num": "38", "nombre": "Mauricio Suárez Sandoval", "meses": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, {"num": "39", "nombre": "Miguel Gajardo", "meses": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, {"num": "40", "nombre": "Obed Rosas", "meses": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, {"num": "41", "nombre": "Quirino Jeréz", "meses": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, {"num": "42", "nombre": "Roberto Martinez", "meses": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, {"num": "43", "nombre": "Rodrigo Moreno Troncoso", "meses": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, {"num": "44", "nombre": "Rolando Colilguan", "meses": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, {"num": "45", "nombre": "Samuel Acevedo", "meses": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, {"num": "46", "nombre": "Samuel Barraza", "meses": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, {"num": "47", "nombre": "Sergio Díaz Godoy", "meses": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, {"num": "48", "nombre": "Sergio Palma", "meses": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, {"num": "49", "nombre": "Venericio Ubilla", "meses": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, {"num": "50", "nombre": "Victor Calderón", "meses": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, {"num": "51", "nombre": "Victor Lara", "meses": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}], "ofrendas": [17300, 14800, 13520, 13660, 10500, 0, 0, 0, 0, 0, 0, 0], "gastos": {"Enero 2026": {"movimientos": [{"desc": "Saldo anterior", "fecha": "", "ingreso": 95402, "egreso": 0, "link": ""}, {"desc": "Cuotas año 2025", "fecha": "", "ingreso": 34000, "egreso": 0, "link": ""}, {"desc": "Cuotas del mes", "fecha": "", "ingreso": 186000, "egreso": 0, "link": ""}, {"desc": "Ofrenda Reunion mensual", "fecha": "", "ingreso": 17300, "egreso": 0, "link": ""}, {"desc": "Aportes trabajos iglesia", "fecha": "", "ingreso": 5000, "egreso": 0, "link": ""}], "resumen": {"total_ingresos": 337702, "total_egresos": 0, "caja_chica": 337702, "aporte_gral": 2919582, "saldo_total": 3257284}}, "Febrero 2026": {"movimientos": [{"desc": "Saldo anterior", "fecha": "", "ingreso": 337702, "egreso": 0, "link": ""}, {"desc": "Cuotas del mes", "fecha": "", "ingreso": 56000, "egreso": 0, "link": ""}, {"desc": "Ofrenda Reunion mensual", "fecha": "", "ingreso": 14800, "egreso": 0, "link": ""}, {"desc": "Aportes trabajos iglesia", "fecha": "", "ingreso": 5000, "egreso": 0, "link": ""}, {"desc": "Intereses año 2025 cta ahorro", "fecha": "", "ingreso": 37916, "egreso": 0, "link": ""}, {"desc": "Aporte Regalo Pastor", "fecha": "", "ingreso": 0, "egreso": 51800, "link": ""}], "resumen": {"total_ingresos": 451418, "total_egresos": 51800, "caja_chica": 361702, "aporte_gral": 2957498, "saldo_total": 3319200}}, "Marzo 2026": {"movimientos": [{"desc": "Saldo anterior", "fecha": "", "ingreso": 361702, "egreso": 0, "link": ""}, {"desc": "Cuotas del mes", "fecha": "", "ingreso": 196000, "egreso": 0, "link": ""}, {"desc": "Ofrenda Reunion mensual", "fecha": "", "ingreso": 13520, "egreso": 0, "link": ""}, {"desc": "Aportes trabajos iglesia", "fecha": "", "ingreso": 35000, "egreso": 0, "link": ""}, {"desc": "Aporte mortuario", "fecha": "", "ingreso": 0, "egreso": 250000, "link": ""}], "resumen": {"total_ingresos": 606222, "total_egresos": 250000, "caja_chica": 356222, "aporte_gral": 2957498, "saldo_total": 3313720}}, "Abril 2026": {"movimientos": [{"desc": "Saldo anterior", "fecha": "", "ingreso": 356222, "egreso": 0, "link": ""}, {"desc": "Cuotas del mes", "fecha": "", "ingreso": 84000, "egreso": 0, "link": ""}, {"desc": "Ofrenda Reunion mensual", "fecha": "", "ingreso": 13660, "egreso": 0, "link": ""}, {"desc": "Aportes trabajos iglesia", "fecha": "", "ingreso": 15000, "egreso": 0, "link": ""}, {"desc": "Gastos sala de audio", "fecha": "", "ingreso": 0, "egreso": 632570, "link": ""}, {"desc": "traspaso dineros a caja de gastos varios", "fecha": "", "ingreso": 0, "egreso": 900000, "link": ""}, {"desc": "Gastos bencina", "fecha": "", "ingreso": 0, "egreso": 20000, "link": ""}], "resumen": {"total_ingresos": 716312, "total_egresos": 652570, "caja_chica": 716312, "aporte_gral": 2057498, "saldo_total": 2773810}}, "Mayo 2026": {"movimientos": [{"desc": "Saldo anterior", "fecha": "", "ingreso": 716312, "egreso": 0, "link": ""}, {"desc": "Cuotas del mes", "fecha": "", "ingreso": 132000, "egreso": 0, "link": ""}], "resumen": {"total_ingresos": 848312, "total_egresos": 0, "caja_chica": 848312, "aporte_gral": 2057498, "saldo_total": 2905810}}}, "months": ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"]};
+
+// Working copies (editable) + memoria local del navegador
+const STORAGE_KEY_APP = 'iep_voluntarios_machali_2026_data_v4';
+function deepClone(obj){ return JSON.parse(JSON.stringify(obj)); }
+function loadSavedAppData(){
+  try {
+    const saved = JSON.parse(localStorage.getItem(STORAGE_KEY_APP) || 'null');
+    if(saved && saved.version === 4) return saved;
+  } catch(e) { console.warn('No se pudo cargar memoria local', e); }
+  return null;
+}
+const SAVED_APP = loadSavedAppData();
+let DATA_GASTOS  = SAVED_APP?.gastos || deepClone(RAW.gastos);
+let DATA_ASIST   = SAVED_APP?.asistencia || deepClone(RAW.asistencia);
+let DATA_CUOTAS  = SAVED_APP?.cuotas || deepClone(RAW.cuotas2026);
+let DATA_OFRENDAS= SAVED_APP?.ofrendas || [...RAW.ofrendas];
+const MONTHS = RAW.months;
+
+let currentGastosMes = SAVED_APP?.currentGastosMes || Object.keys(DATA_GASTOS)[0];
+let asistStatusCycle = ['P','A','E','T','M',''];
+let appInitialized = false;
+
+function saveAppData(){
+  try {
+    localStorage.setItem(STORAGE_KEY_APP, JSON.stringify({
+      version: 4,
+      updatedAt: new Date().toISOString(),
+      currentGastosMes,
+      gastos: DATA_GASTOS,
+      asistencia: DATA_ASIST,
+      cuotas: DATA_CUOTAS,
+      ofrendas: DATA_OFRENDAS
+    }));
+  } catch(e) {
+    console.error('No se pudo guardar la memoria local', e);
+    toast('⚠ No se pudo guardar en memoria local');
+  }
+}
+
+function resetAppData(){
+  if(!confirm('¿Restaurar datos originales? Se borrarán los cambios guardados en este navegador.')) return;
+  localStorage.removeItem(STORAGE_KEY_APP);
+  location.reload();
+}
+
+// ══════════════════════════════════════════════
+//  HELPERS
+// ══════════════════════════════════════════════
+const $ = id => document.getElementById(id);
+const fmt = n => n ? '$ ' + Number(n).toLocaleString('es-CL') : '—';
+const fmtNum = n => Number(n).toLocaleString('es-CL');
+
+function toast(msg, dur=2500) {
+  const t = $('toast'); t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(t._t);
+  t._t = setTimeout(() => t.classList.remove('show'), dur);
+}
+
+function switchTab(id, btn) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(b => b.classList.remove('active'));
+  $('panel-' + id).classList.add('active');
+  btn.classList.add('active');
+  if(id==='asistencia') renderAsistencia();
+  if(id==='cuotas') renderCuotas();
+  if(id==='ofrendas') renderOfrendas();
+  if(id==='resumen') renderResumen();
+}
+
+// Clock
+function updateClock() {
+  const n = new Date();
+  $('live-clock').textContent = n.toLocaleDateString('es-CL',{weekday:'short',day:'2-digit',month:'short'}) + '  ' + n.toLocaleTimeString('es-CL',{hour:'2-digit',minute:'2-digit'});
+}
+setInterval(updateClock, 1000); updateClock();
+
+
+// ══════════════════════════════════════════════
+//  SINCRONIZACIÓN CUOTAS → GASTOS / RESUMEN
+// ══════════════════════════════════════════════
+function totalCuotasPorMes(mesIdx) {
+  return DATA_CUOTAS.reduce((s, r) => s + (Number(r.meses[mesIdx]) || 0), 0);
+}
+
+function esMovimientoCuotas(mov) {
+  return String(mov.desc || '').toLowerCase().includes('cuotas del mes');
+}
+
+function recalcularResumenMes(mesKey) {
+  const d = DATA_GASTOS[mesKey];
+  if(!d) return;
+  const totalIng = d.movimientos.reduce((s,m)=>s+(Number(m.ingreso)||0),0);
+  const totalEgr = d.movimientos.reduce((s,m)=>s+(Number(m.egreso)||0),0);
+  d.resumen.total_ingresos = totalIng;
+  d.resumen.total_egresos  = totalEgr;
+  d.resumen.caja_chica = totalIng - totalEgr;
+  d.resumen.saldo_total = d.resumen.caja_chica + (Number(d.resumen.aporte_gral)||0);
+}
+
+function sincronizarCuotasConGastos(guardar=true) {
+  MONTHS.forEach((mes, idx) => {
+    const mesKey = `${mes} 2026`;
+    if(!DATA_GASTOS[mesKey]) return;
+    const totalCuotas = totalCuotasPorMes(idx);
+    let mov = DATA_GASTOS[mesKey].movimientos.find(esMovimientoCuotas);
+    if(!mov) {
+      mov = { desc:'Cuotas del mes', fecha:'', ingreso:0, egreso:0, link:'' };
+      DATA_GASTOS[mesKey].movimientos.push(mov);
+    }
+    mov.ingreso = totalCuotas;
+    mov.egreso = 0;
+    recalcularResumenMes(mesKey);
+  });
+  if(guardar) saveAppData();
+}
+
+// ══════════════════════════════════════════════
+//  GASTOS
+// ══════════════════════════════════════════════
+function ordenarMesesGastos(keys) {
+  const base = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+  return keys.slice().sort((a,b)=>{
+    const ma = a.match(/^(.+?)\s+(\d{4})$/);
+    const mb = b.match(/^(.+?)\s+(\d{4})$/);
+    if(ma && mb){
+      const ya = Number(ma[2]), yb = Number(mb[2]);
+      if(ya !== yb) return ya - yb;
+      const ia = base.indexOf(ma[1]);
+      const ib = base.indexOf(mb[1]);
+      if(ia !== -1 && ib !== -1) return ia - ib;
+    }
+    return a.localeCompare(b, 'es');
+  });
+}
+
+function getUltimoMesGastos() {
+  const keys = ordenarMesesGastos(Object.keys(DATA_GASTOS));
+  return keys[keys.length - 1];
+}
+
+function initGastosMonths() {
+  const el = $('gastos-months');
+  el.innerHTML = '';
+  ordenarMesesGastos(Object.keys(DATA_GASTOS)).forEach(mes => {
+    const b = document.createElement('button');
+    b.className = 'ms-btn' + (mes === currentGastosMes ? ' active' : '');
+    b.textContent = mes;
+    b.onclick = () => { currentGastosMes = mes; saveAppData(); document.querySelectorAll('#gastos-months .ms-btn').forEach(x=>x.classList.remove('active')); b.classList.add('active'); renderGastos(); };
+    el.appendChild(b);
+  });
+}
+
+function normalizarNombreMesGastos(nombre) {
+  let n = (nombre || '').trim().replace(/\s+/g, ' ');
+  if(!n) return '';
+  n = n.charAt(0).toUpperCase() + n.slice(1);
+  if(!/\d{4}$/.test(n)) n += ' 2026';
+  return n;
+}
+
+function agregarMesGastos() {
+  const sugeridos = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+  const existentes = Object.keys(DATA_GASTOS);
+  const siguiente = sugeridos.find(m => !existentes.includes(`${m} 2026`));
+  const entrada = prompt('Nombre del nuevo mes para Control de Gastos:', siguiente ? `${siguiente} 2026` : 'Nuevo mes 2026');
+  const mesKey = normalizarNombreMesGastos(entrada);
+  if(!mesKey) return;
+  if(DATA_GASTOS[mesKey]) { toast('⚠ Ese mes ya existe'); currentGastosMes = mesKey; initGastosMonths(); renderGastos(); return; }
+
+  const ultimoKey = getUltimoMesGastos();
+  const ultimo = ultimoKey ? DATA_GASTOS[ultimoKey] : null;
+  const saldoAnterior = ultimo?.resumen?.caja_chica || 0;
+  const aporteAnterior = ultimo?.resumen?.aporte_gral || 0;
+
+  DATA_GASTOS[mesKey] = {
+    movimientos: [
+      { desc: 'Saldo anterior', fecha: '', ingreso: saldoAnterior, egreso: 0, link: '' },
+      { desc: 'Cuotas del mes', fecha: '', ingreso: 0, egreso: 0, link: '' }
+    ],
+    resumen: {
+      total_ingresos: saldoAnterior,
+      total_egresos: 0,
+      caja_chica: saldoAnterior,
+      aporte_gral: aporteAnterior,
+      saldo_total: saldoAnterior + aporteAnterior
+    }
+  };
+  currentGastosMes = mesKey;
+  recalcularResumenMes(mesKey);
+  saveAppData();
+  initGastosMonths();
+  renderGastos();
+  toast('✓ Mes agregado y guardado');
+}
+
+function renderGastos() {
+  if(!DATA_GASTOS[currentGastosMes]) currentGastosMes = getUltimoMesGastos() || Object.keys(DATA_GASTOS)[0];
+  const d = DATA_GASTOS[currentGastosMes];
+  if(!d) return;
+  recalcularResumenMes(currentGastosMes);
+  const r = d.resumen;
+  $('gastos-mes-label').textContent = currentGastosMes;
+
+  // KPIs
+  const saldo = r.total_ingresos - r.total_egresos;
+  $('gastos-kpis').innerHTML = `
+    <div class="kpi dark"><div class="kpi-label">Total Ingresos</div><div class="kpi-val">${fmt(r.total_ingresos)}</div><div class="kpi-sub">${currentGastosMes}</div></div>
+    <div class="kpi" style="border-bottom:3px solid #ef4444;"><div class="kpi-label">Total Egresos</div><div class="kpi-val" style="color:#991b1b;">${fmt(r.total_egresos)}</div><div class="kpi-sub">${currentGastosMes}</div></div>
+    <div class="kpi accent"><div class="kpi-label">Saldo del Mes</div><div class="kpi-val">${fmt(saldo)}</div><div class="kpi-sub">Ingresos − Egresos</div></div>
+    <div class="kpi dark"><div class="kpi-label">Saldo Total en Caja</div><div class="kpi-val">${fmt(r.saldo_total)}</div><div class="kpi-sub">Caja chica + Aportes</div></div>
+  `;
+
+  // Caja
+  $('gastos-caja').innerHTML = `
+    <div class="caja-card ing"><div class="cc-label">Caja Chica</div><div class="cc-val">${fmt(r.caja_chica)}</div></div>
+    <div class="caja-card egr"><div class="cc-label">Aporte Generales</div><div class="cc-val">${fmt(r.aporte_gral)}</div></div>
+    <div class="caja-card tot"><div class="cc-label">TOTAL EN CAJA</div><div class="cc-val">${fmt(r.saldo_total)}</div></div>
+  `;
+
+  // Table
+  const tbody = $('gastos-tbody');
+  tbody.innerHTML = '';
+  d.movimientos.forEach((m, i) => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td class="td-num">${i+1}</td>
+      <td class="td-name"><span class="editable" contenteditable="true" onblur="editMovField(${i},'desc',this.textContent.trim())">${m.desc}</span></td>
+      <td><span class="editable" contenteditable="true" style="font-family:var(--mono);font-size:11px;" onblur="editMovField(${i},'fecha',this.textContent.trim())">${m.fecha||''}</span></td>
+      <td class="td-money ${m.ingreso?'td-ing':'td-zero'}"><span class="editable" contenteditable="true" onblur="editMovNumber(${i},'ingreso',this)" data-val="${m.ingreso}">${m.ingreso?fmtNum(m.ingreso):'—'}</span></td>
+      <td class="td-money ${m.egreso?'td-egr':'td-zero'}"><span class="editable" contenteditable="true" onblur="editMovNumber(${i},'egreso',this)" data-val="${m.egreso}">${m.egreso?fmtNum(m.egreso):'—'}</span></td>
+      <td style="font-size:11px;color:var(--muted);">${m.link?`<a href="${m.link}" target="_blank" style="color:var(--amarillo);">🔗 Ver boleta</a>`:''}</td>
+      <td><button class="btn btn-danger btn-sm" onclick="eliminarMov(${i})">✕</button></td>
+    `;
+    tbody.appendChild(tr);
+  });
+
+  // Total row
+  const totalIng = d.movimientos.reduce((s,m)=>s+m.ingreso,0);
+  const totalEgr = d.movimientos.reduce((s,m)=>s+m.egreso,0);
+  const totTr = document.createElement('tr');
+  totTr.className = 'total-row';
+  totTr.innerHTML = `<td></td><td>TOTALES</td><td></td><td class="td-money" style="text-align:right;">${fmt(totalIng)}</td><td class="td-money" style="text-align:right;">${fmt(totalEgr)}</td><td></td><td></td>`;
+  tbody.appendChild(totTr);
+}
+
+function editMovField(idx, field, val) {
+  DATA_GASTOS[currentGastosMes].movimientos[idx][field] = val;
+  recalcGastosResumen();
+  toast('✓ Guardado');
+}
+
+function editMovNumber(idx, field, el) {
+  const raw = el.textContent.replace(/[^0-9]/g,'');
+  const num = parseInt(raw)||0;
+  DATA_GASTOS[currentGastosMes].movimientos[idx][field] = num;
+  el.textContent = num ? fmtNum(num) : '—';
+  el.parentElement.className = 'td-money ' + (field==='ingreso'?(num?'td-ing':'td-zero'):(num?'td-egr':'td-zero'));
+  recalcGastosResumen();
+  toast('✓ Guardado');
+}
+
+function recalcGastosResumen() {
+  recalcularResumenMes(currentGastosMes);
+  saveAppData();
+  renderGastos();
+}
+
+function eliminarMov(idx) {
+  if(!confirm('¿Eliminar este movimiento?')) return;
+  DATA_GASTOS[currentGastosMes].movimientos.splice(idx,1);
+  recalcGastosResumen();
+  toast('Movimiento eliminado');
+}
+
+function toggleMovForm() {
+  const f = $('mov-form');
+  f.classList.toggle('open');
+}
+
+function agregarMov() {
+  const desc = $('f-desc').value.trim();
+  if(!desc){ toast('⚠ Ingresa una descripción'); return; }
+  const m = {
+    desc, fecha: $('f-fecha').value,
+    ingreso: parseInt($('f-ing').value)||0,
+    egreso:  parseInt($('f-egr').value)||0,
+    link: $('f-link').value.trim()
+  };
+  DATA_GASTOS[currentGastosMes].movimientos.push(m);
+  ['f-desc','f-fecha','f-ing','f-egr','f-link'].forEach(id=>$(id).value='');
+  toggleMovForm();
+  recalcGastosResumen();
+  toast('✓ Movimiento agregado');
+}
+
+// ══════════════════════════════════════════════
+//  ASISTENCIA
+// ══════════════════════════════════════════════
+function initAsistFilter() {
+  const sel = $('asist-filter');
+  sel.innerHTML = '<option value="">Todos los meses</option>';
+  MONTHS.forEach((m,i)=>{
+    const o=document.createElement('option'); o.value=i; o.textContent=m; sel.appendChild(o);
+  });
+}
+
+function esFilaPorcentajeAsistencia(r) {
+  return String(r.nombre || '').toLowerCase().includes('porcentaje asistencia');
+}
+function esFilaTotalPresentes(r) {
+  return String(r.nombre || '').toLowerCase().includes('total presentes');
+}
+function esFilaResumenAsistencia(r) {
+  return esFilaPorcentajeAsistencia(r) || esFilaTotalPresentes(r);
+}
+function formatoPorcentajeAsistencia(valor) {
+  const num = parseFloat(String(valor).replace(',', '.')) || 0;
+  const pct = num > 1 ? Math.round(num) : Math.round(num * 100);
+  return pct + '%';
+}
+
+function renderAsistencia() {
+  const q = $('asist-search').value.toLowerCase();
+  const filterMes = $('asist-filter').value;
+  let rows = DATA_ASIST.filter(r => !q || r.nombre.toLowerCase().includes(q));
+  const rowsCalculo = rows.filter(r => !esFilaResumenAsistencia(r));
+
+  // Stats: se calculan solo con voluntarios, no con filas de resumen.
+  const activeMeses = filterMes !== '' ? [parseInt(filterMes)] : MONTHS.map((_,i)=>i).filter(i=>rowsCalculo.some(r=>r.meses[i]));
+  let totalCeldas=0, totalP=0, totalA=0, totalE=0;
+  rowsCalculo.forEach(r=>{ activeMeses.forEach(i=>{ const v=(r.meses[i]||'').toUpperCase(); if(v){totalCeldas++; if(v==='P')totalP++; else if(v==='A')totalA++; else if(v==='E')totalE++;} }); });
+  const pctP = totalCeldas ? Math.round(totalP/totalCeldas*100) : 0;
+
+  $('asist-kpis').innerHTML = `
+    <div class="kpi dark"><div class="kpi-label">Voluntarios</div><div class="kpi-val">${rowsCalculo.length}</div></div>
+    <div class="kpi" style="border-bottom:3px solid var(--pass);"><div class="kpi-label">Presentes</div><div class="kpi-val" style="color:#166534;">${totalP}</div><div class="kpi-sub">${pctP}% de asistencia</div></div>
+    <div class="kpi" style="border-bottom:3px solid #ef4444;"><div class="kpi-label">Ausentes</div><div class="kpi-val" style="color:#991b1b;">${totalA}</div></div>
+    <div class="kpi" style="border-bottom:3px solid #f59e0b;"><div class="kpi-label">Excusados</div><div class="kpi-val" style="color:#854d0e;">${totalE}</div></div>
+  `;
+  $('asist-count').textContent = rowsCalculo.length;
+
+  // Header
+  const showMeses = filterMes !== '' ? [parseInt(filterMes)] : MONTHS.map((_,i)=>i);
+  $('asist-thead').innerHTML = '<tr><th>#</th><th>Nombre</th>' + showMeses.map(i=>`<th style="text-align:center;min-width:52px;">${MONTHS[i].slice(0,3)}</th>`).join('') + '<th style="text-align:center;">P</th><th style="text-align:center;">%</th></tr>';
+
+  // Rows
+  const tbody = $('asist-tbody');
+  tbody.innerHTML = '';
+  rows.forEach((r, ri) => {
+    const ridx = DATA_ASIST.indexOf(r);
+    const tr = document.createElement('tr');
+
+    if(esFilaPorcentajeAsistencia(r)) {
+      tr.className = 'asist-summary-row';
+      tr.innerHTML = `<td class="td-num">60</td><td class="td-name">${r.nombre}<br><span class="asist-locked-note">Solo lectura · no editable</span></td>` +
+        showMeses.map(i => `<td style="text-align:center;"><span class="asist-percent-cell">${formatoPorcentajeAsistencia(r.meses[i])}</span></td>`).join('') +
+        `<td class="td-num">—</td><td><span class="badge badge-ok">%</span></td>`;
+      tbody.appendChild(tr);
+      return;
+    }
+
+    const presentes = r.meses.filter(v=>(v||'').toUpperCase()==='P').length;
+    const total_meses = r.meses.filter(v=>v!=='').length;
+    const pct = total_meses ? Math.round(presentes/total_meses*100) : 0;
+    const isTotal = esFilaTotalPresentes(r);
+
+    if(isTotal) {
+      tr.className = 'asist-summary-row';
+      tr.innerHTML = `<td class="td-num"></td><td class="td-name">${r.nombre}</td>` +
+        showMeses.map(i => `<td style="text-align:center;"><span class="asist-percent-cell" style="background:var(--negro);color:var(--amarillo);">${r.meses[i] || '0'}</span></td>`).join('') +
+        `<td class="td-num">—</td><td><span class="badge badge-ok">Total</span></td>`;
+      tbody.appendChild(tr);
+      return;
+    }
+
+    tr.innerHTML = `<td class="td-num">${r.num||ri+1}</td><td class="td-name">${r.nombre}</td>` +
+      showMeses.map(i => {
+        const v = (r.meses[i]||'').toUpperCase();
+        return `<td style="text-align:center;"><span class="chip chip-${v||'x'}" title="Click para cambiar" onclick="cycleAsist(${ridx},${i},this)">${v||'·'}</span></td>`;
+      }).join('') +
+      `<td class="td-num" style="color:#166534;font-weight:800;">${presentes}</td><td><span class="badge ${pct>=80?'badge-ok':pct>=50?'badge-warn':'badge-neg'}">${pct}%</span></td>`;
+    tbody.appendChild(tr);
+  });
+}
+function cycleAsist(ridx, mesIdx, el) {
+  if(esFilaResumenAsistencia(DATA_ASIST[ridx])) {
+    toast('🔒 Esta fila es solo lectura');
+    return;
+  }
+  const cur = (DATA_ASIST[ridx].meses[mesIdx] || '').toUpperCase();
+  const cycle = ['P','A','E','T','M',''];
+  const nextIdx = (cycle.indexOf(cur)+1) % cycle.length;
+  const next = cycle[nextIdx];
+  DATA_ASIST[ridx].meses[mesIdx] = next;
+  saveAppData();
+  el.textContent = next || '·';
+  el.className = 'chip chip-' + (next||'x');
+  toast('Estado: ' + (next||'Sin dato'));
+  renderAsistencia();
+}
+
+// ══════════════════════════════════════════════
+//  CUOTAS
+// ══════════════════════════════════════════════
+function renderCuotas() {
+  const q = $('cuotas-search').value.toLowerCase();
+  const rows = DATA_CUOTAS.filter(r=>!q||r.nombre.toLowerCase().includes(q));
+  $('cuotas-count').textContent = rows.length;
+
+  const totales = MONTHS.map((_,i)=>rows.reduce((s,r)=>s+(r.meses[i]||0),0));
+  const grandTotal = totales.reduce((a,b)=>a+b,0);
+  const pagadores = rows.filter(r=>r.meses.some(v=>v>0)).length;
+
+  $('cuotas-kpis').innerHTML = `
+    <div class="kpi dark"><div class="kpi-label">Voluntarios</div><div class="kpi-val">${rows.length}</div></div>
+    <div class="kpi accent"><div class="kpi-label">Total Recaudado</div><div class="kpi-val">${fmt(grandTotal)}</div></div>
+    <div class="kpi"><div class="kpi-label">Han pagado</div><div class="kpi-val" style="color:#166534;">${pagadores}</div><div class="kpi-sub">${Math.round(pagadores/rows.length*100)}% de voluntarios</div></div>
+    <div class="kpi"><div class="kpi-label">Promedio por mes</div><div class="kpi-val">${fmt(Math.round(grandTotal/12))}</div></div>
+  `;
+
+  // Header
+  $('cuotas-thead').innerHTML = '<tr><th>#</th><th>Nombre</th>' + MONTHS.map(m=>`<th style="text-align:right;min-width:72px;">${m.slice(0,3)}</th>`).join('') + '<th style="text-align:right;">Total</th></tr>';
+
+  // Body
+  const tbody = $('cuotas-tbody');
+  tbody.innerHTML = '';
+  rows.forEach((r, ri) => {
+    const ridx = DATA_CUOTAS.indexOf(r);
+    const total = r.meses.reduce((a,b)=>a+b,0);
+    const tr = document.createElement('tr');
+    tr.innerHTML = `<td class="td-num">${r.num||ri+1}</td><td class="td-name">${r.nombre}</td>` +
+      r.meses.map((v,i)=>`<td class="td-money"><div style="display:flex;align-items:center;justify-content:flex-end;gap:4px;"><span class="editable ${v?'cell-pagado':'cell-vacio'}" contenteditable="true" onblur="editCuota(${ridx},${i},this)" data-val="${v}">${v?fmtNum(v):'—'}</span>${v?`<button class="btn btn-sm" style="padding:2px 6px;font-size:10px;background:var(--negro);color:var(--amarillo);border:1px solid var(--amarillo);border-radius:4px;cursor:pointer;line-height:1;" onclick="emitirReciboRapido(${ridx},${i})" title="Emitir recibo">🧾</button>`:''}</div></td>`).join('') +
+      `<td class="td-money" style="color:${total?'#166534':'var(--gris3)'};font-weight:900;">${total?fmt(total):'—'}</td>`;
+    tbody.appendChild(tr);
+  });
+
+  // Total row
+  const totTr = document.createElement('tr');
+  totTr.className = 'total-row';
+  totTr.innerHTML = `<td></td><td>TOTALES</td>${totales.map(t=>`<td class="td-money" style="text-align:right;">${t?fmt(t):'—'}</td>`).join('')}<td class="td-money" style="text-align:right;">${fmt(grandTotal)}</td>`;
+  tbody.appendChild(totTr);
+}
+
+function editCuota(ridx, mesIdx, el) {
+  const raw = el.textContent.replace(/[^0-9]/g,'');
+  const num = parseInt(raw)||0;
+  const prev = DATA_CUOTAS[ridx].meses[mesIdx];
+  DATA_CUOTAS[ridx].meses[mesIdx] = num;
+  el.textContent = num ? fmtNum(num) : '—';
+  el.className = 'editable ' + (num?'cell-pagado':'cell-vacio');
+  sincronizarCuotasConGastos();
+  saveAppData();
+  renderCuotas();
+  if(num > 0 && prev === 0) {
+    // Nuevo pago registrado — preguntar si emitir recibo
+    if(confirm(`✅ Cuota registrada\n${DATA_CUOTAS[ridx].nombre}\n${MONTHS[mesIdx]}: ${fmt(num)}\n\n¿Deseas emitir el recibo de pago?`)) {
+      emitirReciboRapido(ridx, mesIdx);
+    }
+  } else {
+    toast('✓ Cuota actualizada');
+  }
+}
+
+// ══════════════════════════════════════════════
+//  OFRENDAS
+// ══════════════════════════════════════════════
+function renderOfrendas() {
+  const total = DATA_OFRENDAS.reduce((a,b)=>a+b,0);
+  const max = Math.max(...DATA_OFRENDAS);
+  const promedio = Math.round(DATA_OFRENDAS.filter(v=>v>0).reduce((a,b)=>a+b,0) / DATA_OFRENDAS.filter(v=>v>0).length)||0;
+
+  $('ofrendas-kpis').innerHTML = `
+    <div class="kpi accent"><div class="kpi-label">Total 2026</div><div class="kpi-val">${fmt(total)}</div></div>
+    <div class="kpi dark"><div class="kpi-label">Mayor ofrenda</div><div class="kpi-val">${fmt(max)}</div></div>
+    <div class="kpi"><div class="kpi-label">Promedio mensual</div><div class="kpi-val">${fmt(promedio)}</div></div>
+    <div class="kpi"><div class="kpi-label">Meses registrados</div><div class="kpi-val">${DATA_OFRENDAS.filter(v=>v>0).length}</div></div>
+  `;
+
+  // Table
+  const thead = $('ofrendas-table').querySelector('thead') || $('ofrendas-table').createTHead();
+  thead.innerHTML = '<tr><th>#</th><th>Mes</th><th style="text-align:right">Ofrenda</th><th style="text-align:right">Progreso</th></tr>';
+  const tbody = $('ofrendas-tbody');
+  tbody.innerHTML = '';
+  DATA_OFRENDAS.forEach((v,i)=>{
+    const pct = max ? Math.round(v/max*100) : 0;
+    const tr = document.createElement('tr');
+    tr.innerHTML = `<td class="td-num">${i+1}</td><td style="font-weight:600;">${MONTHS[i]}</td>
+      <td class="td-money ${v?'td-ing':'td-zero'}"><span class="editable" contenteditable="true" onblur="editOfrenda(${i},this)">${v?fmtNum(v):'—'}</span></td>
+      <td style="min-width:140px;"><div class="prog-wrap"><div class="prog-fill" style="width:${pct}%;"></div></div><span style="font-size:10px;color:var(--muted);font-family:var(--mono);">${pct}%</span></td>`;
+    tbody.appendChild(tr);
+  });
+
+  // Chart
+  const chart = $('ofrendas-chart');
+  chart.innerHTML = '';
+  DATA_OFRENDAS.forEach((v,i)=>{
+    const pct = max ? Math.round(v/max*100) : 0;
+    const col = document.createElement('div');
+    col.style.cssText = 'flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;';
+    col.innerHTML = `
+      <span style="font-size:9px;font-family:var(--mono);color:var(--muted);">${v?'$'+Math.round(v/1000)+'k':''}</span>
+      <div style="width:100%;background:var(--amarillo);border-radius:4px 4px 0 0;height:${pct}%;min-height:${v?4:0}px;transition:height .4s;"></div>
+      <span style="font-size:9px;color:var(--muted);text-align:center;">${MONTHS[i].slice(0,3)}</span>
+    `;
+    chart.appendChild(col);
+  });
+}
+
+function editOfrenda(idx, el) {
+  const raw = el.textContent.replace(/[^0-9]/g,'');
+  const num = parseInt(raw)||0;
+  DATA_OFRENDAS[idx] = num;
+  saveAppData();
+  renderOfrendas();
+  toast('✓ Ofrenda actualizada');
+}
+
+// ══════════════════════════════════════════════
+//  RESUMEN ANUAL
+// ══════════════════════════════════════════════
+function renderResumen() {
+  const mesesGastos = ordenarMesesGastos(Object.keys(DATA_GASTOS)).map(k => [k, DATA_GASTOS[k]]);
+  const totalIng = mesesGastos.reduce((s,[,d])=>s+d.resumen.total_ingresos,0);
+  const totalEgr = mesesGastos.reduce((s,[,d])=>s+d.resumen.total_egresos,0);
+  const saldoActual = mesesGastos[mesesGastos.length-1][1].resumen.saldo_total;
+  const totalCuotas = DATA_CUOTAS.reduce((s,r)=>s+r.meses.reduce((a,b)=>a+b,0),0);
+
+  $('resumen-kpis').innerHTML = `
+    <div class="kpi accent"><div class="kpi-label">Saldo Total en Caja</div><div class="kpi-val">${fmt(saldoActual)}</div><div class="kpi-sub">Actualizado al último mes</div></div>
+    <div class="kpi dark"><div class="kpi-label">Total Ingresos 2026</div><div class="kpi-val">${fmt(totalIng)}</div></div>
+    <div class="kpi" style="border-bottom:3px solid #ef4444;"><div class="kpi-label">Total Egresos 2026</div><div class="kpi-val" style="color:#991b1b;">${fmt(totalEgr)}</div></div>
+    <div class="kpi dark"><div class="kpi-label">Total Cuotas Cobradas</div><div class="kpi-val">${fmt(totalCuotas)}</div></div>
+  `;
+
+  // Resumen table
+  const table = $('resumen-table');
+  table.innerHTML = `<thead><tr><th>Mes</th><th style="text-align:right">Ingresos</th><th style="text-align:right">Egresos</th><th style="text-align:right">Saldo Neto</th><th style="text-align:right">Total en Caja</th><th>Estado</th></tr></thead>`;
+  const tbody = document.createElement('tbody');
+  mesesGastos.forEach(([mes, d])=>{
+    const neto = d.resumen.total_ingresos - d.resumen.total_egresos;
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td style="font-weight:700;">${mes}</td>
+      <td class="td-money td-ing">${fmt(d.resumen.total_ingresos)}</td>
+      <td class="td-money td-egr">${fmt(d.resumen.total_egresos)}</td>
+      <td class="td-money ${neto>=0?'td-ing':'td-egr'}">${fmt(neto)}</td>
+      <td class="td-money" style="font-weight:900;">${fmt(d.resumen.saldo_total)}</td>
+      <td><span class="badge ${neto>=0?'badge-ok':'badge-neg'}">${neto>=0?'Superávit':'Déficit'}</span></td>
+    `;
+    tbody.appendChild(tr);
+  });
+  table.appendChild(tbody);
+
+  // Asistencia progress
+  const asistEl = $('resumen-asist');
+  const mesActivos = MONTHS.filter((_,i)=>DATA_ASIST.some(r=>!esFilaResumenAsistencia(r) && r.meses[i]!==''));
+  asistEl.innerHTML = mesActivos.map((m,i)=>{
+    const idx = MONTHS.indexOf(m);
+    const presentes = DATA_ASIST.filter(r=>!esFilaResumenAsistencia(r) && (r.meses[idx]||'').toUpperCase()==='P').length;
+    const total = DATA_ASIST.filter(r=>!esFilaResumenAsistencia(r) && r.meses[idx]!=='').length;
+    const pct = total ? Math.round(presentes/total*100) : 0;
+    return `<div style="margin-bottom:10px;"><div style="display:flex;justify-content:space-between;margin-bottom:4px;"><span style="font-size:12px;font-weight:600;">${m}</span><span style="font-size:11px;font-family:var(--mono);color:${pct>=80?'#166534':pct>=50?'#854d0e':'#991b1b'};font-weight:700;">${presentes}/${total} · ${pct}%</span></div><div class="prog-wrap"><div class="prog-fill" style="width:${pct}%;background:${pct>=80?'#22c55e':pct>=50?'#f59e0b':'#ef4444'};"></div></div></div>`;
+  }).join('');
+
+  // Cuotas progress
+  const cuotasEl = $('resumen-cuotas-prog');
+  cuotasEl.innerHTML = MONTHS.map((m,i)=>{
+    const recaudado = DATA_CUOTAS.reduce((s,r)=>s+(r.meses[i]||0),0);
+    const meta = 186000; // estimated from Enero
+    const pct = Math.min(Math.round(recaudado/meta*100),100);
+    return `<div style="margin-bottom:10px;"><div style="display:flex;justify-content:space-between;margin-bottom:4px;"><span style="font-size:12px;font-weight:600;">${m}</span><span style="font-size:11px;font-family:var(--mono);color:#166534;font-weight:700;">${recaudado?fmt(recaudado):'—'}</span></div><div class="prog-wrap"><div class="prog-fill" style="width:${pct}%;"></div></div></div>`;
+  }).join('');
+}
+
+// ══════════════════════════════════════════════
+//  EXPORT CSV
+// ══════════════════════════════════════════════
+function exportCSV(type) {
+  let csv='', filename='';
+  if(type==='gastos'){
+    const d = DATA_GASTOS[currentGastosMes];
+    csv = 'Descripción,Fecha,Ingreso,Egreso,Link\n';
+    csv += d.movimientos.map(m=>`"${m.desc}","${m.fecha}",${m.ingreso},${m.egreso},"${m.link}"`).join('\n');
+    filename = `Gastos_${currentGastosMes.replace(/ /g,'_')}.csv`;
+  } else if(type==='asistencia'){
+    csv = 'N°,Nombre,' + MONTHS.join(',') + ',Total Presentes\n';
+    csv += DATA_ASIST.map(r=>`${r.num},"${r.nombre}",${r.meses.join(',')},${ r.meses.filter(v=>v.toUpperCase()==='P').length}`).join('\n');
+    filename = 'Asistencia_2026.csv';
+  } else if(type==='cuotas'){
+    csv = 'N°,Nombre,' + MONTHS.join(',') + ',Total\n';
+    csv += DATA_CUOTAS.map(r=>`${r.num},"${r.nombre}",${r.meses.join(',')},${r.meses.reduce((a,b)=>a+b,0)}`).join('\n');
+    filename = 'Cuotas_2026.csv';
+  } else if(type==='ofrendas'){
+    csv = 'Mes,Ofrenda\n' + MONTHS.map((m,i)=>`${m},${DATA_OFRENDAS[i]}`).join('\n');
+    filename = 'Ofrendas_2026.csv';
+  } else if(type==='resumen'){
+    csv = 'Mes,Ingresos,Egresos,Saldo,Total Caja\n';
+    csv += ordenarMesesGastos(Object.keys(DATA_GASTOS)).map(m=>{ const d=DATA_GASTOS[m]; return `${m},${d.resumen.total_ingresos},${d.resumen.total_egresos},${d.resumen.total_ingresos-d.resumen.total_egresos},${d.resumen.saldo_total}`; }).join('\n');
+    filename = 'Resumen_2026.csv';
+  }
+  const blob = new Blob(['\uFEFF'+csv],{type:'text/csv;charset=utf-8;'});
+  const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download=filename; a.click();
+  toast('✓ CSV exportado: '+filename);
+}
+
+
+// ══════════════════════════════════════════════════════
+//  RECIBOS DE PAGO
+// ══════════════════════════════════════════════════════
+let RECIBOS_HISTORIAL = JSON.parse(localStorage.getItem('iep_recibos') || '[]');
+let reciboActual = null;
+let reciboNumCorrelativo = parseInt(localStorage.getItem('iep_recibo_num') || '1');
+
+function saveRecibos() {
+  localStorage.setItem('iep_recibos', JSON.stringify(RECIBOS_HISTORIAL));
+  localStorage.setItem('iep_recibo_num', String(reciboNumCorrelativo));
+  actualizarBadgeRecibos();
+}
+
+function actualizarBadgeRecibos() {
+  const badge = $('recibos-badge');
+  const cnt = $('recibos-count');
+  if(RECIBOS_HISTORIAL.length > 0) {
+    badge.style.display = 'inline-flex';
+    cnt.textContent = RECIBOS_HISTORIAL.length;
+  } else {
+    badge.style.display = 'none';
+  }
+}
+
+function closeModal(id) {
+  $(id).classList.remove('open');
+  document.body.style.overflow = '';
+}
+function openModal(id) {
+  $(id).classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+// ── Abrir formulario de emisión manual
+function openRegistrarPago() {
+  // Poblar selector de voluntarios
+  const sel = $('rf-voluntario');
+  sel.innerHTML = DATA_CUOTAS.map((r,i) => `<option value="${i}">${r.nombre}</option>`).join('');
+  
+  // Poblar meses checkboxes
+  const mesesDiv = $('rf-meses-checks');
+  mesesDiv.innerHTML = MONTHS.map((m,i) => `
+    <label style="display:flex;align-items:center;gap:4px;cursor:pointer;padding:4px 8px;border-radius:4px;border:1.5px solid var(--gris2);font-size:11px;font-weight:700;transition:all .12s;"
+      onmouseover="this.style.borderColor='var(--amarillo)'" onmouseout="if(!this.querySelector('input').checked)this.style.borderColor='var(--gris2)'">
+      <input type="checkbox" value="${i}" style="accent-color:var(--amarillo);" onchange="updateMontoPreview();this.closest('label').style.background=this.checked?'#fef9c3':'';this.closest('label').style.borderColor=this.checked?'var(--amarillo)':'var(--gris2)';">
+      ${m.slice(0,3)}
+    </label>
+  `).join('');
+
+  // Fecha por defecto hoy
+  $('rf-fecha').value = new Date().toISOString().slice(0,10);
+  
+  updateMontoPreview();
+  openModal('modal-recibo-form');
+}
+
+function updateMontoPreview() {
+  const ridx = parseInt($('rf-voluntario').value);
+  const checks = document.querySelectorAll('#rf-meses-checks input:checked');
+  let total = 0;
+  checks.forEach(c => {
+    const mesIdx = parseInt(c.value);
+    total += DATA_CUOTAS[ridx]?.meses[mesIdx] || 0;
+  });
+  $('rf-monto-preview').textContent = total ? fmt(total) : '$ 0';
+}
+
+// ── Emitir recibo rápido desde botón 🧾 en la tabla
+function emitirReciboRapido(ridx, mesIdx) {
+  const r = DATA_CUOTAS[ridx];
+  const monto = r.meses[mesIdx];
+  if(!monto) { toast('⚠ No hay monto registrado'); return; }
+  
+  const recibo = {
+    num: String(reciboNumCorrelativo).padStart(4,'0'),
+    fecha: new Date().toLocaleDateString('es-CL', {day:'2-digit',month:'long',year:'numeric'}),
+    fechaISO: new Date().toISOString().slice(0,10),
+    voluntario: r.nombre,
+    num_voluntario: r.num,
+    meses: [MONTHS[mesIdx]],
+    montoTotal: monto,
+    forma: 'Efectivo',
+    tesorero: 'Tesorero IEP Machalí',
+    comprobante: '',
+    timestamp: Date.now()
+  };
+  reciboNumCorrelativo++;
+  RECIBOS_HISTORIAL.push(recibo);
+  saveRecibos();
+  mostrarRecibo(recibo);
+}
+
+// ── Generar recibo desde formulario
+function generarRecibo() {
+  const ridx = parseInt($('rf-voluntario').value);
+  const r = DATA_CUOTAS[ridx];
+  const checks = [...document.querySelectorAll('#rf-meses-checks input:checked')];
+  if(!checks.length) { toast('⚠ Selecciona al menos un mes'); return; }
+  
+  const mesesSel = checks.map(c => parseInt(c.value));
+  const montoTotal = mesesSel.reduce((s,i) => s + (r.meses[i]||0), 0);
+  
+  const fechaVal = $('rf-fecha').value;
+  const fechaFmt = fechaVal ? new Date(fechaVal+'T12:00:00').toLocaleDateString('es-CL',{day:'2-digit',month:'long',year:'numeric'}) : new Date().toLocaleDateString('es-CL',{day:'2-digit',month:'long',year:'numeric'});
+  
+  const recibo = {
+    num: String(reciboNumCorrelativo).padStart(4,'0'),
+    fecha: fechaFmt,
+    fechaISO: fechaVal || new Date().toISOString().slice(0,10),
+    voluntario: r.nombre,
+    num_voluntario: r.num,
+    meses: mesesSel.map(i => MONTHS[i]),
+    montoTotal,
+    forma: $('rf-forma').value,
+    tesorero: $('rf-tesorero').value.trim() || 'Tesorero IEP Machalí',
+    comprobante: $('rf-comprobante').value.trim(),
+    timestamp: Date.now()
+  };
+  reciboNumCorrelativo++;
+  RECIBOS_HISTORIAL.push(recibo);
+  saveRecibos();
+  closeModal('modal-recibo-form');
+  mostrarRecibo(recibo);
+}
+
+// ── Construir HTML del recibo
+function buildReciboHTML(rec, forPrint=false) {
+  const mesesChips = rec.meses.map(m => `<span class="recibo-mes-chip">${m} 2026</span>`).join('');
+  const montoLetras = numeroALetras(rec.montoTotal);
+  const logoIcon = '⛪';
+  
+  return `
+  <div class="recibo" id="recibo-doc">
+    <div class="recibo-header">
+      <div style="display:flex;align-items:center;gap:12px;">
+        <div style="width:44px;height:44px;background:var(--amarillo);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;">${logoIcon}</div>
+        <div>
+          <div class="recibo-org">IEP <span>Machalí</span></div>
+          <div class="recibo-sub-org">Cuerpo de Voluntarios · Tesorería 2026</div>
+        </div>
+      </div>
+      <div class="recibo-num-badge">
+        <div class="rn-label">Recibo N°</div>
+        <div class="rn-val">${rec.num}</div>
+      </div>
+    </div>
+    <div class="recibo-divider"></div>
+
+    <div class="recibo-body">
+      <div class="recibo-section-title">Datos del Pagador</div>
+      <div class="recibo-grid">
+        <div class="recibo-field" style="grid-column:span 2;">
+          <div class="recibo-field-label">Nombre Completo</div>
+          <div class="recibo-field-val" style="font-size:16px;">${rec.voluntario}</div>
+        </div>
+        <div class="recibo-field">
+          <div class="recibo-field-label">N° Voluntario</div>
+          <div class="recibo-field-val mono">${rec.num_voluntario || '—'}</div>
+        </div>
+        <div class="recibo-field">
+          <div class="recibo-field-label">Fecha de Pago</div>
+          <div class="recibo-field-val mono">${rec.fecha}</div>
+        </div>
+        <div class="recibo-field">
+          <div class="recibo-field-label">Forma de Pago</div>
+          <div class="recibo-field-val">${rec.forma}</div>
+        </div>
+        <div class="recibo-field">
+          <div class="recibo-field-label">N° Comprobante</div>
+          <div class="recibo-field-val mono">${rec.comprobante || '—'}</div>
+        </div>
+      </div>
+
+      <div class="recibo-section-title">Concepto de Pago</div>
+      <div style="margin-bottom:14px;">
+        <div style="font-size:12px;color:var(--muted);margin-bottom:8px;">Cuotas correspondientes a:</div>
+        <div class="recibo-meses-chips">${mesesChips}</div>
+      </div>
+
+      <div class="recibo-monto-box">
+        <div>
+          <div class="recibo-monto-label">Monto Recibido</div>
+          <div style="font-size:11px;color:#555;margin-top:4px;font-style:italic;">${montoLetras}</div>
+        </div>
+        <div class="recibo-monto-val">${fmt(rec.montoTotal)}</div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:20px;padding-top:16px;border-top:1px dashed var(--gris2);">
+        <div style="text-align:center;">
+          <div style="border-top:2px solid var(--negro);padding-top:8px;margin-top:32px;">
+            <div style="font-size:11px;font-weight:700;color:var(--negro);">${rec.tesorero}</div>
+            <div style="font-size:10px;color:var(--muted);">Tesorero / Responsable</div>
+          </div>
+        </div>
+        <div style="text-align:center;">
+          <div style="border-top:2px solid var(--negro);padding-top:8px;margin-top:32px;">
+            <div style="font-size:11px;font-weight:700;color:var(--negro);">${rec.voluntario}</div>
+            <div style="font-size:10px;color:var(--muted);">Firma del Pagador</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="recibo-footer">
+      <div class="recibo-footer-text">
+        <strong>Iglesia Evangélica Pentecostal — IEP Machalí</strong><br>
+        Cuerpo de Voluntarios · Año 2026<br>
+        Este documento acredita el pago de cuota(s) indicada(s).
+      </div>
+      <div class="recibo-footer-seal">⛪</div>
+    </div>
+    <div class="recibo-copy-note">✦ COPIA PARA ARCHIVO — RECIBO N° ${rec.num} ✦</div>
+  </div>`;
+}
+
+// ── Mostrar recibo en modal
+function mostrarRecibo(rec) {
+  reciboActual = rec;
+  $('recibo-num-header').textContent = 'N° ' + rec.num;
+  $('recibo-render').innerHTML = buildReciboHTML(rec);
+  openModal('modal-recibo-ver');
+  toast('✓ Recibo N° ' + rec.num + ' generado');
+}
+
+// ── Imprimir
+function imprimirRecibo() {
+  const html = buildReciboHTML(reciboActual, true);
+  const w = window.open('','_blank','width=700,height=900');
+  w.document.write(`<!DOCTYPE html><html><head><meta charset="UTF-8">
+    <title>Recibo N° ${reciboActual.num} — IEP Machalí</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+      :root{--negro:#0F0F0F;--amarillo:#FFD000;--ambar:#f0b800;--blanco:#FFFFFF;--gris:#f5f5f5;--gris2:#e8e8e8;--muted:#666;--font:'Inter',sans-serif;--mono:'JetBrains Mono',monospace;}
+      *{box-sizing:border-box;margin:0;padding:0;}
+      body{font-family:var(--font);background:white;padding:20px;}
+      .recibo{border:2px solid #e8e8e8;border-radius:12px;overflow:hidden;max-width:560px;margin:0 auto;}
+      .recibo-header{background:#0F0F0F;padding:20px 24px;position:relative;overflow:hidden;}
+      .recibo-header::before{content:'';position:absolute;top:-20px;right:-20px;width:120px;height:120px;border-radius:50%;background:rgba(255,208,0,.08);border:2px solid rgba(255,208,0,.15);}
+      .recibo-org{font-size:18px;font-weight:900;color:#fff;}.recibo-org span{color:#FFD000;}
+      .recibo-sub-org{font-size:11px;color:#888;font-family:var(--mono);letter-spacing:.12em;margin-top:2px;}
+      .recibo-num-badge{position:absolute;top:16px;right:20px;background:#FFD000;color:#0F0F0F;border-radius:8px;padding:6px 14px;text-align:center;}
+      .rn-label{font-size:9px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;}
+      .rn-val{font-size:18px;font-weight:900;font-family:var(--mono);}
+      .recibo-divider{height:4px;background:linear-gradient(90deg,#FFD000 60%,#f0b800);}
+      .recibo-body{padding:22px 24px;}
+      .recibo-section-title{font-size:9px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:#FFD000;background:#0F0F0F;display:inline-block;padding:3px 10px;border-radius:3px;margin-bottom:12px;}
+      .recibo-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px 20px;margin-bottom:18px;}
+      .recibo-field{padding:8px 12px;background:#f5f5f5;border-radius:6px;border-left:3px solid #FFD000;}
+      .recibo-field-label{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:#666;margin-bottom:2px;}
+      .recibo-field-val{font-size:13px;font-weight:700;color:#0F0F0F;}.recibo-field-val.mono{font-family:var(--mono);}
+      .recibo-monto-box{background:#0F0F0F;border-radius:10px;padding:18px 22px;margin-bottom:18px;display:flex;align-items:center;justify-content:space-between;border:2px solid #FFD000;}
+      .recibo-monto-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:#888;}
+      .recibo-monto-val{font-size:32px;font-weight:900;color:#FFD000;font-family:var(--mono);}
+      .recibo-mes-chip{padding:5px 12px;border-radius:20px;background:#dcfce7;color:#166534;border:1.5px solid #86efac;font-size:11px;font-weight:700;font-family:var(--mono);display:inline-block;margin:3px;}
+      .recibo-meses-chips{margin-bottom:14px;}
+      .recibo-footer{background:#f5f5f5;border-top:2px dashed #e8e8e8;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;}
+      .recibo-footer-text{font-size:10px;color:#666;line-height:1.6;}.recibo-footer-text strong{color:#0F0F0F;}
+      .recibo-copy-note{text-align:center;font-size:9px;font-family:var(--mono);color:#ccc;letter-spacing:.1em;text-transform:uppercase;margin-top:10px;padding:8px;border-top:1px dashed #e8e8e8;}
+      @media print{body{padding:0;}.recibo{border:1px solid #ccc;border-radius:0;}}
+    </style>
+  </head><body onload="window.print();window.close();">${html}
+</div><!-- /app-wrapper -->
+</body></html>`);
+  w.document.close();
+}
+
+// ── Descargar como HTML
+function descargarReciboHTML() {
+  const rec = reciboActual;
+  const blob = new Blob([`<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Recibo N° ${rec.num}</title></head><body>${buildReciboHTML(rec)}
+</div><!-- /app-wrapper -->
+</body></html>`], {type:'text/html'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = `Recibo_${rec.num}_${rec.voluntario.replace(/ /g,'_')}.html`;
+  a.click();
+  toast('✓ Recibo descargado');
+}
+
+// ── Copiar texto
+function copiarRecibo() {
+  const rec = reciboActual;
+  const txt = `RECIBO DE PAGO N° ${rec.num}\nIEP Machalí — Cuerpo de Voluntarios 2026\n${'─'.repeat(40)}\nVoluntario: ${rec.voluntario}\nFecha: ${rec.fecha}\nMes(es): ${rec.meses.join(', ')}\nForma de pago: ${rec.forma}\nMonto: ${fmt(rec.montoTotal)}\n${rec.comprobante?'Comprobante: '+rec.comprobante+'\n':''}${'─'.repeat(40)}\nTesorero: ${rec.tesorero}`;
+  navigator.clipboard.writeText(txt).then(()=>toast('✓ Copiado al portapapeles')).catch(()=>toast('⚠ No se pudo copiar'));
+}
+
+// ── Historial
+function openHistorial() {
+  $('hist-count-badge').textContent = RECIBOS_HISTORIAL.length;
+  const list = $('historial-list');
+  if(!RECIBOS_HISTORIAL.length) {
+    list.innerHTML = '<div style="padding:40px;text-align:center;color:var(--muted);font-size:13px;">No hay recibos emitidos aún</div>';
+  } else {
+    list.innerHTML = RECIBOS_HISTORIAL.slice().reverse().map((r, i) => `
+      <div class="recibo-hist-item" onclick="mostrarRecibo(RECIBOS_HISTORIAL[RECIBOS_HISTORIAL.length-1-${i}])">
+        <div class="rhi-badge">🧾</div>
+        <div class="rhi-info">
+          <div class="rhi-name">${r.voluntario}</div>
+          <div class="rhi-meta">Recibo N° ${r.num} · ${r.fecha} · ${r.meses.join(', ')}</div>
+        </div>
+        <div class="rhi-monto">${fmt(r.montoTotal)}</div>
+      </div>
+    `).join('');
+  }
+  openModal('modal-historial');
+}
+
+function limpiarHistorial() {
+  if(!confirm('¿Eliminar todos los recibos del historial?')) return;
+  RECIBOS_HISTORIAL = [];
+  reciboNumCorrelativo = 1;
+  saveRecibos();
+  closeModal('modal-historial');
+  toast('Historial limpiado');
+}
+
+function exportarHistorial() {
+  let csv = 'N° Recibo,Voluntario,Fecha,Meses,Monto,Forma Pago,Comprobante\n';
+  csv += RECIBOS_HISTORIAL.map(r => `${r.num},"${r.voluntario}","${r.fecha}","${r.meses.join(';')}",${r.montoTotal},${r.forma},"${r.comprobante}"`).join('\n');
+  const blob = new Blob(['\uFEFF'+csv],{type:'text/csv;charset=utf-8;'});
+  const a = document.createElement('a'); a.href=URL.createObjectURL(blob);
+  a.download='Historial_Recibos_2026.csv'; a.click();
+  toast('✓ Historial exportado');
+}
+
+// ── Cerrar modales al click fuera
+document.querySelectorAll('.modal-overlay').forEach(m => {
+  m.addEventListener('click', e => { if(e.target===m) closeModal(m.id); });
+});
+
+// ── Número a letras (CLP simple)
+function numeroALetras(n) {
+  if(!n) return 'Cero pesos';
+  const unidades = ['','uno','dos','tres','cuatro','cinco','seis','siete','ocho','nueve','diez','once','doce','trece','catorce','quince','dieciséis','diecisiete','dieciocho','diecinueve'];
+  const decenas  = ['','diez','veinte','treinta','cuarenta','cincuenta','sesenta','setenta','ochenta','noventa'];
+  const centenas = ['','ciento','doscientos','trescientos','cuatrocientos','quinientos','seiscientos','setecientos','ochocientos','novecientos'];
+  function c2(n) {
+    if(n<20) return unidades[n];
+    const d=Math.floor(n/10), u=n%10;
+    return decenas[d] + (u ? ' y ' + unidades[u] : '');
+  }
+  function c3(n) {
+    if(n===100) return 'cien';
+    const c=Math.floor(n/100), r=n%100;
+    return centenas[c] + (r ? ' ' + c2(r) : '');
+  }
+  let result = '';
+  if(n >= 1000) {
+    const miles = Math.floor(n/1000);
+    result = (miles===1?'mil':(c3(miles)||c2(miles))+' mil');
+    n = n % 1000;
+  }
+  if(n > 0) result += (result?' ':'') + (n>=100?c3(n):c2(n));
+  return (result || 'cero') + ' pesos';
+}
+
+// ── Init badge
+actualizarBadgeRecibos();
+
+
+// ══════════════════════════════════════════════
+//  LOGIN / AUTH
+// ══════════════════════════════════════════════
+const AUTH = { user: 'Elopezl', pass: 'M@ch4l1.2026' };
+
+function doLogin() {
+  const user = $('inp-user').value.trim();
+  const pass = $('inp-pass').value;
+  const err  = $('login-err');
+  const btn  = $('login-btn');
+  const spinner = $('login-spinner');
+  const btnTxt  = $('login-btn-txt');
+
+  // Validar
+  if(!user || !pass) {
+    showLoginErr('Completa usuario y contraseña');
+    return;
+  }
+
+  // Simular loading
+  btn.disabled = true;
+  spinner.style.display = 'block';
+  btnTxt.textContent = 'Verificando...';
+  err.classList.remove('show');
+
+  setTimeout(() => {
+    if(user === AUTH.user && pass === AUTH.pass) {
+      // ✅ Login exitoso
+      $('login-screen').style.opacity = '0';
+      $('login-screen').style.transition = 'opacity .4s ease';
+      setTimeout(() => {
+        $('login-screen').classList.add('hidden');
+        $('app-wrapper').classList.add('visible');
+        // init app
+        sincronizarCuotasConGastos(false);
+        initGastosMonths();
+        renderGastos();
+        initAsistFilter();
+        renderAsistencia();
+        actualizarBadgeRecibos();
+        saveAppData();
+        toast('✓ Cambios protegidos con memoria local');
+      }, 400);
+    } else {
+      btn.disabled = false;
+      spinner.style.display = 'none';
+      btnTxt.textContent = '🔐 Iniciar Sesión';
+      $('inp-pass').value = '';
+      showLoginErr('Usuario o contraseña incorrectos');
+      $('inp-pass').focus();
+    }
+  }, 900);
+}
+
+function showLoginErr(msg) {
+  const err = $('login-err');
+  $('login-err-txt').textContent = msg;
+  err.classList.remove('show');
+  void err.offsetWidth; // force reflow for re-animation
+  err.classList.add('show');
+}
+
+function togglePass() {
+  const inp = $('inp-pass');
+  const btn = $('eye-btn');
+  if(inp.type === 'password') {
+    inp.type = 'text';
+    btn.textContent = '🙈';
+  } else {
+    inp.type = 'password';
+    btn.textContent = '👁';
+  }
+}
+
+function doLogout() {
+  if(!confirm('¿Cerrar sesión?')) return;
+  $('app-wrapper').classList.remove('visible');
+  $('login-screen').classList.remove('hidden');
+  $('login-screen').style.opacity = '1';
+  $('login-screen').style.transition = '';
+  $('inp-user').value = '';
+  $('inp-pass').value = '';
+  $('login-err').classList.remove('show');
+  $('login-btn').disabled = false;
+  $('login-spinner').style.display = 'none';
+  $('login-btn-txt').textContent = '🔐 Iniciar Sesión';
+  $('inp-user').focus();
+}
+
+// ══════════════════════════════════════════════
+//  INIT — called after successful login
+// ══════════════════════════════════════════════
+// (init runs inside doLogin on auth success)
+
+</script>
+
+</div><!-- /app-wrapper -->
+</body>
+</html>
